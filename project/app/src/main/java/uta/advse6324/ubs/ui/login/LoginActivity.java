@@ -55,7 +55,7 @@ public class LoginActivity extends AppCompatActivity {
         resetButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LoginActivity.this.startActivity(new Intent(LoginActivity.this, NavigationActivity.class));
+                LoginActivity.this.startActivity(new Intent(LoginActivity.this, ForgetpwActivity.class));
             }
         });
     }
