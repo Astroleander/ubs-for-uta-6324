@@ -24,7 +24,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     private ArrayList userFields = new ArrayList<String>();
 
-    public static final String DB_NAME = "test3";
+    public static final String DB_NAME = "test4";
     public static final int DB_VERSION = 1;
 
 
@@ -166,7 +166,7 @@ public class DBHelper extends SQLiteOpenHelper {
         cv.put(EnumTable.User.PHONE,    user.getPhone());
         cv.put(EnumTable.User.EMAIL,    user.getEmail());
 
-        long res = db.update(TABLE_LIST.USER, cv, "USERNAME=?", new String[]{user.getUsername()});
+        long res = db.update(TABLE_LIST.USER, cv, "ID=?", new String[]{user.getId()});
         if(res == -1)
             return "failed";
         else

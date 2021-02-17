@@ -18,7 +18,7 @@ public class ForgetpwActivity extends AppCompatActivity {
     private DBHelper dbHelper;
     private Button confirmButton;
 
-    private EditText username;
+    private EditText idnumber;
     private EditText phoneNumber;
 
     @Override
@@ -29,7 +29,7 @@ public class ForgetpwActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        username = findViewById(R.id.username);
+        idnumber = findViewById(R.id.idnumber);
         phoneNumber = findViewById(R.id.tel);
 
 
@@ -46,17 +46,17 @@ public class ForgetpwActivity extends AppCompatActivity {
 
     private void confirm() {
         dbHelper = new DBHelper(this);
-        String qusername = getStringFromEditText(this.username);
+        String qidnumber = getStringFromEditText(this.idnumber);
         String phonenumber = getStringFromEditText(this.phoneNumber);
-        String phone_db = dbHelper.queryUserPhonenumber(qusername);
+        String phone_db = dbHelper.queryUserPhonenumber(qidnumber);
         if(phone_db.equals(phonenumber)){
             Intent intent = new Intent(this, ChangepwActivity.class);
 
-            intent.putExtra("userName",qusername);
+            intent.putExtra("idNumber",qidnumber);
             intent.putExtra("phoneNumber",phonenumber);
             startActivity(intent);
         }else{
-            Toast.makeText(ForgetpwActivity.this, "userName or phoneNumber wrong"+phone_db+phonenumber, Toast.LENGTH_LONG).show();
+            Toast.makeText(ForgetpwActivity.this, "idNumber or phoneNumber wrong"+phone_db+phonenumber, Toast.LENGTH_LONG).show();
 
         }
     }

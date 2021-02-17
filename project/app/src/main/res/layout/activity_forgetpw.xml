@@ -7,13 +7,13 @@
     tools:context=".ui.login.ForgetpwActivity">
 
     <EditText
-        android:id="@+id/username"
+        android:id="@+id/idnumber"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="96dp"
         android:layout_marginEnd="24dp"
-        android:hint="@string/prompt_username"
+        android:hint="@string/prompt_id"
         android:inputType="textEmailAddress"
         android:selectAllOnFocus="true"
         app:layout_constraintBottom_toBottomOf="@+id/tel"

@@ -18,7 +18,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button loginButton;
     private Button resetButton;
 
-    private EditText username;
+    private EditText idnumber;
     private EditText password;
 
 //    private DBHelper dbHelper;
@@ -32,7 +32,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        username = findViewById(R.id.username);
+        idnumber = findViewById(R.id.idnumber);
         password = findViewById(R.id.password);
 
         registerButton = findViewById(R.id.register);

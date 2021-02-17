@@ -45,10 +45,10 @@ public class ChangepwActivity extends AppCompatActivity {
 
     private void confirm() {
         dbHelper = new DBHelper(this);
-        String username = getIntent().getStringExtra("userName");
+        String idnumber = getIntent().getStringExtra("idNumber");
         String pw1 = getStringFromEditText(this.password1);
         String pw2 = getStringFromEditText(this.password2);
-        User user = dbHelper.queryUser(username);
+        User user = dbHelper.queryUser(idnumber);
         if(pw1.equals(pw2)){
             Intent intent = new Intent(this, LoginActivity.class);
             user.setPassword(pw1);
