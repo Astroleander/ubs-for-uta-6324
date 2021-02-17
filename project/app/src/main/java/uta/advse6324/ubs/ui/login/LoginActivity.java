@@ -3,6 +3,7 @@ package uta.advse6324.ubs.ui.login;
 import androidx.appcompat.app.AppCompatActivity;
 import uta.advse6324.ubs.R;
 import uta.advse6324.ubs.ui.main.NavigationActivity;
+import uta.advse6324.ubs.ui.registration.RegistrationActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -38,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//            startActivity(new Intent(this, RegisterActivity.class));
+                startActivity(new Intent(LoginActivity.this, RegistrationActivity.class));
                 Toast.makeText(LoginActivity.this, "TBC", Toast.LENGTH_LONG).show();
             }
         });

@@ -30,21 +30,13 @@ public class DBHelper extends SQLiteOpenHelper {
 
     private static final String USER_CREATE =
             "create table "+ TABLE_LIST.USER + " (" +
-                    EnumTable.User.ID           + " integer primary key autoincrement, " +
+                    EnumTable.User.ID           + " varchar(10) primary key, " +
                     EnumTable.User.USERNAME     + " varchar(30) not null, " +
                     EnumTable.User.PASSWORD     + " varchar(30) not null," +
-                    EnumTable.User.ROLE         + " varchar(10) not null," +
-                    EnumTable.User.UTAID        + " varchar(10) not null," +
                     EnumTable.User.LASTNAME     + " varchar(30) not null," +
                     EnumTable.User.FIRSTNAME    + " varchar(30) not null," +
                     EnumTable.User.PHONE        + " varchar(20) not null," +
-                    EnumTable.User.EMAIL        + " varchar(30) not null," +
-                    EnumTable.User.ADDRESS      + " varchar(20)," +
-                    EnumTable.User.CITY         + " varchar(20)," +
-                    EnumTable.User.STATE        + " varchar(20)," +
-                    EnumTable.User.ZIPCODE      + " varchar(20)," +
-                    EnumTable.User.MEMBER       + " varchar(20)," +
-                    EnumTable.User.STATUS       + " varchar(20) not null" +
+                    EnumTable.User.EMAIL        + " varchar(30) not null" +
                     ")";
 
     public DBHelper(@Nullable Context context) {
@@ -64,7 +56,6 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         Log.d("DBHelper", "create TABLE");
         db.execSQL(USER_CREATE);
-        addauser(db);
 
 
     }
@@ -81,79 +72,52 @@ public class DBHelper extends SQLiteOpenHelper {
         onUpgrade(db, oldVersion, newVersion);
     }
 
-//  init a user
-    private void addauser(SQLiteDatabase db){
+
+    public void addUser(User user){
+        SQLiteDatabase db = this.getWritableDatabase();
+
         ContentValues cv = new ContentValues();
-        cv.put(EnumTable.User.USERNAME,"chen");
-        cv.put(EnumTable.User.PASSWORD, "123456");
-        cv.put(EnumTable.User.ROLE,     "123456");
-        cv.put(EnumTable.User.UTAID,    "");
-        cv.put(EnumTable.User.LASTNAME, "");
-        cv.put(EnumTable.User.FIRSTNAME,"");
-        cv.put(EnumTable.User.PHONE,    "15600128299");
-        cv.put(EnumTable.User.EMAIL,    "");
-        cv.put(EnumTable.User.ADDRESS,  "");
-        cv.put(EnumTable.User.CITY,     "");
-        cv.put(EnumTable.User.STATE,    "");
-        cv.put(EnumTable.User.ZIPCODE,  "");
-        cv.put(EnumTable.User.MEMBER,   "");
-        cv.put(EnumTable.User.STATUS,  "");
+        cv.put(EnumTable.User.ID, user.getId());
+        cv.put(EnumTable.User.USERNAME, user.getUsername());
+        cv.put(EnumTable.User.PASSWORD, user.getPassword());
+        cv.put(EnumTable.User.LASTNAME, user.getLastname());
+        cv.put(EnumTable.User.FIRSTNAME,user.getFirstname());
+        cv.put(EnumTable.User.PHONE,    user.getPhone());
+        cv.put(EnumTable.User.EMAIL,    user.getEmail());
         long res = db.insert(TABLE_LIST.USER, null, cv);
         Log.e("[inittable]", "init_reservation_tbl: " + res);
     }
     // get a user
-    public User queryUser(String username){
+    public User queryUser(String id){
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.query(
                 TABLE_LIST.USER,
                 null,
-                EnumTable.User.USERNAME + "=\"" + username+"\"" ,
+                EnumTable.User.ID + "=\"" + id+"\"" ,
                 null,
                 null,
                 null,
                 null);
         if (cursor.moveToNext()) {
-//            String username = cursor.getString(cursor.getColumnIndex(EnumTable.User.USERNAME));
+            String username = cursor.getString(cursor.getColumnIndex(EnumTable.User.USERNAME));
             String password = cursor.getString(cursor.getColumnIndex(EnumTable.User.PASSWORD));
-            String role = cursor.getString(cursor.getColumnIndex(EnumTable.User.ROLE));
-            String uta_id = cursor.getString(cursor.getColumnIndex(EnumTable.User.UTAID));
             String firstname = cursor.getString(cursor.getColumnIndex(EnumTable.User.FIRSTNAME));
             String lastname = cursor.getString(cursor.getColumnIndex(EnumTable.User.LASTNAME));
             String phone = cursor.getString(cursor.getColumnIndex(EnumTable.User.PHONE));
             String email = cursor.getString(cursor.getColumnIndex(EnumTable.User.EMAIL));
-            String address = cursor.getString(cursor.getColumnIndex(EnumTable.User.ADDRESS));
-            String city = cursor.getString(cursor.getColumnIndex(EnumTable.User.CITY));
-            String state = cursor.getString(cursor.getColumnIndex(EnumTable.User.STATE));
-            String zipcode = cursor.getString(cursor.getColumnIndex(EnumTable.User.ZIPCODE));
-            String member = cursor.getString(cursor.getColumnIndex(EnumTable.User.MEMBER));
-            String status = cursor.getString(cursor.getColumnIndex(EnumTable.User.STATUS));
 
             User user1 = new User(
+                    id,
                     username,
                     password,
-                    role,
-                    uta_id,
                     lastname,
                     firstname,
                     phone,
-                    email,
-                    address,
-                    city,
-                    state,
-                    zipcode,
-                    member,
-                    status
+                    email
             );
             return  user1;
         }else{
             User user1 = new User("null",
-                    "null",
-                    "null",
-                    "null",
-                    "null",
-                    "null",
-                    "null",
-                    "null",
                     "null",
                     "null",
                     "null",
@@ -167,12 +131,12 @@ public class DBHelper extends SQLiteOpenHelper {
 
 
     // query user's phonenumber
-    public String queryUserPhonenumber(String username){
+    public String queryUserPhonenumber(String id){
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.query(
                 TABLE_LIST.USER,
                 null,
-                EnumTable.User.USERNAME + "=\"" + username+"\"" ,
+                EnumTable.User.ID + "=\"" + id+"\"" ,
                 null,
                 null,
                 null,
@@ -194,20 +158,13 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues cv = new ContentValues();
+        cv.put(EnumTable.User.ID, user.getId());
         cv.put(EnumTable.User.USERNAME, user.getUsername());
         cv.put(EnumTable.User.PASSWORD, user.getPassword());
-        cv.put(EnumTable.User.ROLE,     user.getRole());
-        cv.put(EnumTable.User.UTAID,    user.getUta_id());
         cv.put(EnumTable.User.LASTNAME, user.getLastname());
         cv.put(EnumTable.User.FIRSTNAME,user.getFirstname());
         cv.put(EnumTable.User.PHONE,    user.getPhone());
         cv.put(EnumTable.User.EMAIL,    user.getEmail());
-        cv.put(EnumTable.User.ADDRESS,  user.getAddress());
-        cv.put(EnumTable.User.CITY,     user.getCity());
-        cv.put(EnumTable.User.STATE,    user.getState());
-        cv.put(EnumTable.User.ZIPCODE,  user.getZipcode());
-        cv.put(EnumTable.User.MEMBER,   user.getMember());
-        cv.put(EnumTable.User.STATUS,   user.getStatus());
 
         long res = db.update(TABLE_LIST.USER, cv, "USERNAME=?", new String[]{user.getUsername()});
         if(res == -1)
