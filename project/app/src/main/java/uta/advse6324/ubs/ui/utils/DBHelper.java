@@ -129,6 +129,28 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
+    public boolean queryIdUniqe(String id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.query(
+                TABLE_LIST.USER,
+                null,
+                EnumTable.User.ID + "=\"" + id+"\"" ,
+                null,
+                null,
+                null,
+                null);
+        if (cursor.moveToNext()){
+            String r = cursor.getString(cursor.getColumnIndex(EnumTable.User.ID));
+            cursor.close();
+            if (r == null){
+                return true;
+            }
+            return false;
+        } else {
+            cursor.close();
+            return true;
+        }
+    }
 
     // query user's phonenumber
     public String queryUserPhonenumber(String id){
