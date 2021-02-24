@@ -3,7 +3,9 @@ package uta.advse6324.ubs.ui.login;
 import androidx.appcompat.app.AppCompatActivity;
 import uta.advse6324.ubs.R;
 import uta.advse6324.ubs.ui.main.NavigationActivity;
+import uta.advse6324.ubs.ui.pojo.User;
 import uta.advse6324.ubs.ui.registration.RegistrationActivity;
+import uta.advse6324.ubs.ui.utils.DBHelper;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,15 +16,16 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
+    public static final String LOGIN_USER_INFO = "LOGIN_USER_INFO";
     private Button registerButton;
     private Button loginButton;
     private Button resetButton;
 
-    private EditText idnumber;
-    private EditText password;
+    private EditText idEditText;
+    private EditText pwdEdittext;
 
-//    private DBHelper dbHelper;
-//    private String qusername;
+    private DBHelper dbHelper;
+    private String id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +35,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        idnumber = findViewById(R.id.idnumber);
-        password = findViewById(R.id.password);
+        idEditText = findViewById(R.id.idnumber);
+        pwdEdittext = findViewById(R.id.password);
 
         registerButton = findViewById(R.id.register);
         registerButton.setOnClickListener(new View.OnClickListener() {
@@ -61,8 +64,33 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    static String getStringFromEditText(EditText editText) {
+        return editText.getText().toString().trim();
+    }
+
     private void login() {
-        Intent intent = new Intent(this, NavigationActivity.class);
-        startActivity(intent);
+        dbHelper = new DBHelper(this);
+        id = getStringFromEditText(this.idEditText);
+        String pwd = getStringFromEditText(this.pwdEdittext);
+        if (id.length() > 0 && pwd.length() > 0) {
+            User result = dbHelper.queryLogin(id, pwd);
+            handleAfterLogin(result);
+        } else {
+            Toast.makeText(this, "Field is required!", Toast.LENGTH_LONG).show();
+            // TODO: to handle exception
+        }
+    }
+
+    private void handleAfterLogin(User result) {
+        if (result != null) {
+            Intent intent;
+            intent = new Intent(this, NavigationActivity.class);
+            intent.putExtra(LOGIN_USER_INFO, result);
+            startActivity(intent);
+            finish();
+            Toast.makeText(this, "Successful Login!", Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(this, "Incorrectly Inputs!", Toast.LENGTH_LONG).show();
+        }
     }
 }

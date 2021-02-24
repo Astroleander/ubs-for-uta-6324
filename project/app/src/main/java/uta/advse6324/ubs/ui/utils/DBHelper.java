@@ -196,7 +196,41 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
+    public User queryLogin(String qid, String qpw) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.query(
+                TABLE_LIST.USER,
+                null,
+                EnumTable.User.ID + "=\"" + qid + "\" AND " + EnumTable.User.PASSWORD + "=\"" + qpw +"\"",
+                null,
+                null,
+                null,
+                null);
+        if (cursor.moveToNext()) {
+            String id = cursor.getString(cursor.getColumnIndex(EnumTable.User.ID));
+            String username = cursor.getString(cursor.getColumnIndex(EnumTable.User.USERNAME));
+            String password = cursor.getString(cursor.getColumnIndex(EnumTable.User.PASSWORD));
+            String firstname = cursor.getString(cursor.getColumnIndex(EnumTable.User.FIRSTNAME));
+            String lastname = cursor.getString(cursor.getColumnIndex(EnumTable.User.LASTNAME));
+            String phone = cursor.getString(cursor.getColumnIndex(EnumTable.User.PHONE));
+            String email = cursor.getString(cursor.getColumnIndex(EnumTable.User.EMAIL));
 
+            User user = new User(
+                    id,
+                    username,
+                    password,
+                    lastname,
+                    firstname,
+                    phone,
+                    email
+            );
+            cursor.close();
+            return user;
+        } else {
+            cursor.close();
+            return null;
+        }
+    }
 
 
 
