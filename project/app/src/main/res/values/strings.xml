@@ -1,11 +1,11 @@
 <resources>
     <string name="app_name">UBS</string>
     <string name="prompt_id">id</string>
-    <string name="prompt_idnumber">IDNUMBER</string>
+    <string name="prompt_idnumber">id</string>
     <string name="prompt_username">username</string>
-    <string name="prompt_password">PASSWORD</string>
-    <string name="prompt_lastname">lastname</string>
-    <string name="prompt_firstname">firstname</string>
+    <string name="prompt_password">password</string>
+    <string name="prompt_lastname">last name</string>
+    <string name="prompt_firstname">first name</string>
     <string name="prompt_phone">phone</string>
     <string name="prompt_email">email</string>
     <string name="action_sign_in">Sign In</string>
