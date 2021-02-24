@@ -88,9 +88,10 @@ public class LoginActivity extends AppCompatActivity {
             intent.putExtra(LOGIN_USER_INFO, result);
             startActivity(intent);
             finish();
-            Toast.makeText(this, "Successful Login!", Toast.LENGTH_LONG).show();
+//            Toast.makeText(this, "Successful Login!", Toast.LENGTH_LONG).show();
         } else {
-            Toast.makeText(this, "Incorrectly Inputs!", Toast.LENGTH_LONG).show();
+            pwdEdittext.setText("");
+            Toast.makeText(this, "Incorrectly Inputs! Please re-try", Toast.LENGTH_LONG).show();
         }
     }
 }
