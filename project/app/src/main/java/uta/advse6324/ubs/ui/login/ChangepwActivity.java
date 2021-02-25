@@ -49,7 +49,7 @@ public class ChangepwActivity extends AppCompatActivity {
         String pw1 = getStringFromEditText(this.password1);
         String pw2 = getStringFromEditText(this.password2);
         User user = dbHelper.queryUser(idnumber);
-        if(pw1.equals(pw2)){
+        if(pw1.equals(pw2)&&(pw1.length()>=6)&&(pw1.length()<=12)){
             Intent intent = new Intent(this, LoginActivity.class);
             user.setPassword(pw1);
             dbHelper.changePW(user);
@@ -58,7 +58,7 @@ public class ChangepwActivity extends AppCompatActivity {
             startActivity(intent);
             Toast.makeText(ChangepwActivity.this,"succesfull",Toast.LENGTH_LONG).show();
         }else{
-            Toast.makeText(ChangepwActivity.this, "The passwords did not match", Toast.LENGTH_LONG).show();
+            Toast.makeText(ChangepwActivity.this, "The passwords did not match or they are not proper", Toast.LENGTH_LONG).show();
 
         }
     }

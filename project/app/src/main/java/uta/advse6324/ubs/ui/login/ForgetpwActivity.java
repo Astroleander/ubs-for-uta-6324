@@ -56,7 +56,7 @@ public class ForgetpwActivity extends AppCompatActivity {
             intent.putExtra("phoneNumber",phonenumber);
             startActivity(intent);
         }else{
-            Toast.makeText(ForgetpwActivity.this, "idNumber or phoneNumber wrong"+phone_db+phonenumber, Toast.LENGTH_LONG).show();
+            Toast.makeText(ForgetpwActivity.this, "idNumber or phoneNumber wrong", Toast.LENGTH_LONG).show();
 
         }
     }
