@@ -3,13 +3,12 @@ package uta.advse6324.ubs.ui.login;
 import androidx.appcompat.app.AppCompatActivity;
 import uta.advse6324.ubs.R;
 import uta.advse6324.ubs.ui.main.NavigationActivity;
-import uta.advse6324.ubs.ui.pojo.User;
+import uta.advse6324.ubs.pojo.User;
 import uta.advse6324.ubs.ui.registration.RegistrationActivity;
-import uta.advse6324.ubs.ui.utils.DBHelper;
+import uta.advse6324.ubs.utils.DBHelper;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;

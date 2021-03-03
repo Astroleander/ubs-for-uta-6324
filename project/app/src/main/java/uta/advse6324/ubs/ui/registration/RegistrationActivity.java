@@ -10,8 +10,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import uta.advse6324.ubs.R;
-import uta.advse6324.ubs.ui.pojo.User;
-import uta.advse6324.ubs.ui.utils.DBHelper;
+import uta.advse6324.ubs.pojo.User;
+import uta.advse6324.ubs.utils.DBHelper;
 
 public class RegistrationActivity  extends AppCompatActivity {
 

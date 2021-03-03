@@ -1,7 +1,15 @@
-package uta.advse6324.ubs.ui.utils;
+package uta.advse6324.ubs.utils;
 
 public class EnumTable {
     public static final int UserLength = 13;
+
+    /**
+     * 所有的表名在这里进行声明和引用，防止冲突
+     */
+    public static final class TABLE_LIST {
+        public static String USER = "tbl_user";
+        public static String POST = "tbl_post";
+    }
 
     public static final class User {
         public static final String ID = "id";
@@ -19,5 +27,14 @@ public class EnumTable {
         public static final String ZIPCODE = "zipcode";
         public static final String MEMBER = "member";
         public static final String STATUS = "status";
+    }
+
+    public static final class Post {
+        public static final String ID = "id";
+        public static final String POST_DATE = "date";
+        public static final String TITLE = "title";
+        public static final String CONTENT = "content";
+        public static final String LIKED = "liked";
+        public static final String OWNER = "owner";
     }
 }

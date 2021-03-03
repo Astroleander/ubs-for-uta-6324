@@ -10,8 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import uta.advse6324.ubs.R;
-import uta.advse6324.ubs.ui.main.NavigationActivity;
-import uta.advse6324.ubs.ui.utils.DBHelper;
+import uta.advse6324.ubs.utils.DBHelper;
 
 public class ForgetpwActivity extends AppCompatActivity {
 

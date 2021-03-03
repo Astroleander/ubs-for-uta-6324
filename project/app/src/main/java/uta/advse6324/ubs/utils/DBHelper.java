@@ -1,4 +1,4 @@
-package uta.advse6324.ubs.ui.utils;
+package uta.advse6324.ubs.utils;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -12,24 +12,15 @@ import androidx.annotation.Nullable;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 
-import uta.advse6324.ubs.ui.pojo.User;
+import uta.advse6324.ubs.pojo.User;
 
 public class DBHelper extends SQLiteOpenHelper {
-
-    private static class TABLE_LIST {
-        public static String USER = "tbl_user";
-        public static String CAR = "tbl_car";
-        public static String Reservation = "tbl_reservation";
-    }
-
-    private ArrayList userFields = new ArrayList<String>();
 
     public static final String DB_NAME = "test4";
     public static final int DB_VERSION = 1;
 
-
     private static final String USER_CREATE =
-            "create table "+ TABLE_LIST.USER + " (" +
+            "create table "+ EnumTable.TABLE_LIST.USER + " (" +
                     EnumTable.User.ID           + " varchar(10) primary key, " +
                     EnumTable.User.USERNAME     + " varchar(30) not null, " +
                     EnumTable.User.PASSWORD     + " varchar(30) not null," +
@@ -41,29 +32,18 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public DBHelper(@Nullable Context context) {
         super(context, DB_NAME, null, DB_VERSION);
-
         Field[] fields = User.class.getDeclaredFields();
-//        for (Field field: fields) {
-//            String field_name = field.toString().split(" ")[2];
-//            String[] group = field_name.split("\\.");
-//            userFields.add(group[group.length - 1]);
-//        }
-//        Log.d("DBHelper", "constructor");
-//        Log.d("DBHelper", userFields.toString());
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         Log.d("DBHelper", "create TABLE");
         db.execSQL(USER_CREATE);
-
-
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_LIST.USER);
-
+        db.execSQL("DROP TABLE IF EXISTS " + EnumTable.TABLE_LIST.USER);
         onCreate(db);
     }
 
@@ -84,14 +64,14 @@ public class DBHelper extends SQLiteOpenHelper {
         cv.put(EnumTable.User.FIRSTNAME,user.getFirstname());
         cv.put(EnumTable.User.PHONE,    user.getPhone());
         cv.put(EnumTable.User.EMAIL,    user.getEmail());
-        long res = db.insert(TABLE_LIST.USER, null, cv);
+        long res = db.insert(EnumTable.TABLE_LIST.USER, null, cv);
         Log.e("[inittable]", "init_reservation_tbl: " + res);
     }
     // get a user
     public User queryUser(String id){
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.query(
-                TABLE_LIST.USER,
+                EnumTable.TABLE_LIST.USER,
                 null,
                 EnumTable.User.ID + "=\"" + id+"\"" ,
                 null,
@@ -132,7 +112,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public boolean queryIdUniqe(String id){
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.query(
-                TABLE_LIST.USER,
+                EnumTable.TABLE_LIST.USER,
                 null,
                 EnumTable.User.ID + "=\"" + id+"\"" ,
                 null,
@@ -156,7 +136,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public String queryUserPhonenumber(String id){
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.query(
-                TABLE_LIST.USER,
+                EnumTable.TABLE_LIST.USER,
                 null,
                 EnumTable.User.ID + "=\"" + id+"\"" ,
                 null,
@@ -188,7 +168,7 @@ public class DBHelper extends SQLiteOpenHelper {
         cv.put(EnumTable.User.PHONE,    user.getPhone());
         cv.put(EnumTable.User.EMAIL,    user.getEmail());
 
-        long res = db.update(TABLE_LIST.USER, cv, "ID=?", new String[]{user.getId()});
+        long res = db.update(EnumTable.TABLE_LIST.USER, cv, "ID=?", new String[]{user.getId()});
         if(res == -1)
             return "failed";
         else
@@ -199,7 +179,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public User queryLogin(String qid, String qpw) {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.query(
-                TABLE_LIST.USER,
+                EnumTable.TABLE_LIST.USER,
                 null,
                 EnumTable.User.ID + "=\"" + qid + "\" AND " + EnumTable.User.PASSWORD + "=\"" + qpw +"\"",
                 null,

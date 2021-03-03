@@ -1,4 +1,4 @@
-package uta.advse6324.ubs.ui.pojo;
+package uta.advse6324.ubs.pojo;
 
 
 import java.io.Serializable;
