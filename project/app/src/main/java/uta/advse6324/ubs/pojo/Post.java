@@ -60,4 +60,12 @@ public class Post {
         this.owner = owner;
     }
 
+    public Post(String id, String title, String content, Integer liked, String owner, String timestamp) {
+        this.id = id;
+        this.title = title;
+        this.content = content;
+        this.liked = liked;
+        this.owner = owner;
+    }
+
 }

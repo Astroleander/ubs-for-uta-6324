@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import java.util.ArrayList;
+
 import androidx.annotation.Nullable;
 import uta.advse6324.ubs.pojo.User;
 import uta.advse6324.ubs.utils.DBHelper;
@@ -40,60 +42,52 @@ public class Post extends DBHelper {
             ")";
 
 
-    public void insert(User user){
+    public void insert(uta.advse6324.ubs.pojo.Post post){
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues cv = new ContentValues();
-        cv.put(EnumTable.User.ID, user.getId());
-        cv.put(EnumTable.User.USERNAME, user.getUsername());
-        cv.put(EnumTable.User.PASSWORD, user.getPassword());
-        cv.put(EnumTable.User.LASTNAME, user.getLastname());
-        cv.put(EnumTable.User.FIRSTNAME,user.getFirstname());
-        cv.put(EnumTable.User.PHONE,    user.getPhone());
-        cv.put(EnumTable.User.EMAIL,    user.getEmail());
-        long res = db.insert(EnumTable.TABLE_LIST.USER, null, cv);
-        Log.e("[inittable]", "init_reservation_tbl: " + res);
+        cv.put(EnumTable.Post.ID,      post.getId());
+        cv.put(EnumTable.Post.TITLE,   post.getTitle());
+        cv.put(EnumTable.Post.CONTENT, post.getContent());
+        cv.put(EnumTable.Post.LIKED,   post.getLiked());
+        cv.put(EnumTable.Post.OWNER,   post.getOwner());
+
+        long res = db.insert(EnumTable.TABLE_LIST.POST, null, cv);
     }
 
-    public User queryUser(String id){
+    public uta.advse6324.ubs.pojo.Post[] queryPostByOwner(String owner_id){
+        ArrayList<uta.advse6324.ubs.pojo.Post> result = new ArrayList<>();
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.query(
-                EnumTable.TABLE_LIST.USER,
+                EnumTable.TABLE_LIST.POST,
                 null,
-                EnumTable.User.ID + "=\"" + id+"\"" ,
+                EnumTable.Post.OWNER + "=\"" + owner_id + "\"" ,
                 null,
                 null,
                 null,
                 null);
-        if (cursor.moveToNext()) {
-            String username = cursor.getString(cursor.getColumnIndex(EnumTable.User.USERNAME));
-            String password = cursor.getString(cursor.getColumnIndex(EnumTable.User.PASSWORD));
-            String firstname = cursor.getString(cursor.getColumnIndex(EnumTable.User.FIRSTNAME));
-            String lastname = cursor.getString(cursor.getColumnIndex(EnumTable.User.LASTNAME));
-            String phone = cursor.getString(cursor.getColumnIndex(EnumTable.User.PHONE));
-            String email = cursor.getString(cursor.getColumnIndex(EnumTable.User.EMAIL));
+        while (cursor.moveToNext()) {
+            String owner = cursor.getString(cursor.getColumnIndex(EnumTable.Post.OWNER));
+            if (owner.equals(owner_id)) {
+                String id = cursor.getString(cursor.getColumnIndex(EnumTable.Post.ID));
+                String title = cursor.getString(cursor.getColumnIndex(EnumTable.Post.TITLE));
+                String content = cursor.getString(cursor.getColumnIndex(EnumTable.Post.CONTENT));
+                int liked = cursor.getInt(cursor.getColumnIndex(EnumTable.Post.LIKED));
+                String post_date = cursor.getString(cursor.getColumnIndex(EnumTable.Post.POST_DATE));
 
-            User user1 = new User(
-                    id,
-                    username,
-                    password,
-                    lastname,
-                    firstname,
-                    phone,
-                    email
-            );
-            return  user1;
-        }else{
-            User user1 = new User("null",
-                    "null",
-                    "null",
-                    "null",
-                    "null",
-                    "null",
-                    "null");
-            return user1;
+                uta.advse6324.ubs.pojo.Post post = new uta.advse6324.ubs.pojo.Post(
+                        id,
+                        title,
+                        content,
+                        liked,
+                        owner,
+                        post_date
+                );
+                result.add(post);
+            }
         }
-
+        cursor.close();
+        uta.advse6324.ubs.pojo.Post[] r = {};
+        return result.toArray(r);
     }
-
 }
