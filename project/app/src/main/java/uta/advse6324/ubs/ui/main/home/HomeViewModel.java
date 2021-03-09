@@ -19,6 +19,7 @@ public class HomeViewModel extends AndroidViewModel {
         super(application);
         mPostList = new MutableLiveData<>();
         dbhelper = new PostDBHelper(getApplication().getApplicationContext());
+        dbhelper.onCreate(dbhelper.getReadableDatabase());
         ArrayList<Post> a = new ArrayList<>();
         Post[] list = dbhelper.queryAllPost();
         dbhelper.close();
