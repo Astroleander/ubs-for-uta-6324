@@ -2,6 +2,7 @@ package uta.advse6324.ubs.ui.main.profile;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,8 @@ import uta.advse6324.ubs.db.PostDBHelper;
 import uta.advse6324.ubs.pojo.Post;
 
 public class MyPostsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+    public static final String DETAIL = "DETAIL";
+
     class PostViewHolder extends RecyclerView.ViewHolder {
         private final TextView title;
         private final TextView content;
@@ -74,6 +77,9 @@ public class MyPostsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                 @Override
                 public void onClick(View view) {
                     // TODO: my posts detail
+//                    Intent i = new Intent(view.getContext(), /*FILL UP WITH YOUR CLASS*/);
+//                    i.putExtra(DETAIL, postList.get(position));
+//                    view.getContext().startActivities();
                 }
             });
             pv.delete.setOnClickListener(new View.OnClickListener() {
