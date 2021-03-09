@@ -1,11 +1,8 @@
 package uta.advse6324.ubs.pojo;
 
-import android.util.Log;
-
 import java.io.Serializable;
 import java.sql.Timestamp;
 
-import static android.content.ContentValues.TAG;
 
 public class Post implements Serializable {
 

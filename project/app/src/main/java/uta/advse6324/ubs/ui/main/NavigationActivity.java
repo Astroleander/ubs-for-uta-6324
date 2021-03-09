@@ -1,15 +1,22 @@
 package uta.advse6324.ubs.ui.main;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+import androidx.viewpager.widget.ViewPager;
+
 import uta.advse6324.ubs.R;
+import uta.advse6324.ubs.ui.main.profile.ProfileFragment;
 
 public class NavigationActivity extends AppCompatActivity {
 
@@ -23,9 +30,21 @@ public class NavigationActivity extends AppCompatActivity {
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.navigation_home, R.id.navigation_club, R.id.navigation_market, R.id.navigation_profile)
                 .build();
+
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
     }
 
+    @Override
+    protected void onResume() {
+        //Return from the edit profile page
+        //Redirected to Profile Fragment
+        int id = this.getIntent().getIntExtra("VIEW_PROFILE",0);
+        if (id == 3){
+            BottomNavigationView navView = findViewById(R.id.nav_view);
+            navView.setSelectedItemId(navView.getMenu().getItem(id).getItemId());
+        }
+        super.onResume();
+    }
 }

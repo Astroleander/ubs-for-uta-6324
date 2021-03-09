@@ -7,42 +7,42 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import uta.advse6324.ubs.R;
 import uta.advse6324.ubs.pojo.User;
-import uta.advse6324.ubs.ui.main.NavigationActivity;
 
 import static uta.advse6324.ubs.ui.login.LoginActivity.LOGIN_USER_INFO;
 
 public class ProfileFragment extends Fragment {
-
-    private ProfileViewModel martketViewModel;
+    public static final String PROFILE_TOKEN = "PROFILE";
+    private ProfileViewModel profileViewModel;
     private View root;
+
+    private User user;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        martketViewModel =
+        profileViewModel =
                 new ViewModelProvider(this).get(ProfileViewModel.class);
         root = inflater.inflate(R.layout.fragment_profile, container, false);
 
-        initView();
+        user = (User) getActivity().getIntent().getSerializableExtra(LOGIN_USER_INFO);
+        initMyPostsButton();
+        initViewProfileButton();
         return root;
     }
 
-    private void initView() {
-        final Button myPost = root.findViewById(R.id.my_posts);
-        myPost.setOnClickListener(new View.OnClickListener() {
+    private void initMyPostsButton() {
+        final Button myPosts = root.findViewById(R.id.my_posts);
+        myPosts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 try {
-                    User user = (User) getActivity().getIntent().getSerializableExtra(LOGIN_USER_INFO);
                     Intent intent;
                     intent = new Intent(getActivity(), ProfileMyPostsActivity.class);
                     intent.putExtra(LOGIN_USER_INFO, user);
@@ -51,6 +51,17 @@ public class ProfileFragment extends Fragment {
                     Log.e("EROERROR", "onClick: ", e);
                     Toast.makeText(root.getContext(), "Load user info failed, try login again", Toast.LENGTH_LONG).show();
                 }
+            }
+        });
+    }
+    private void initViewProfileButton() {
+        Button bt_view_profile = root.findViewById(R.id.view_profile);
+        bt_view_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), ViewProfileActivity.class);
+                intent.putExtra(PROFILE_TOKEN, user);
+                startActivityForResult(intent, 1);
             }
         });
     }
