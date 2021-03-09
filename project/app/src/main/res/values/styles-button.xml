@@ -26,4 +26,14 @@
         <item name="android:background">@android:color/transparent</item>
     </style>
 
+    <style name="WarnButton" parent="UBS">
+        <item name="android:textColor">@color/colorText</item>
+        <item name="android:background">@drawable/button_warn_selector</item>
+        <item name="android:paddingTop">6dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:paddingLeft">24dp</item>
+        <item name="android:paddingRight">24dp</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
 </resources>

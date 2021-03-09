@@ -20,5 +20,11 @@
     <string name="title_club">Club</string>
     <string name="title_market">Market</string>
     <string name="title_profile">Profile</string>
+    <string name="title_btn_profile_my_posts">My Posts</string>
+    <string name="btn_create_post">create one</string>
+    <string name="btn_my_posts">my post</string>
+    <string name="title_menu">menu</string>
+    <string name="btn_delete">Delete</string>
+    <string name="btn_detail">Detail</string>
 
 </resources>

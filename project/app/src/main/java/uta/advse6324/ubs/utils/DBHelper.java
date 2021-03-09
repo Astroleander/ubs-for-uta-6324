@@ -32,12 +32,13 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public DBHelper(@Nullable Context context) {
         super(context, DB_NAME, null, DB_VERSION);
-        Field[] fields = User.class.getDeclaredFields();
+        Log.d("DBHelper", "Constructor is called");
+        getReadableDatabase();
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        Log.d("DBHelper", "create TABLE");
+        Log.d("DBHelper", "create User TABLE");
         db.execSQL(USER_CREATE);
     }
 

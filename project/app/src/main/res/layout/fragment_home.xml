@@ -4,19 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.main.home.HomeFragment">
+    tools:context=".ui.main.home.HomeFragment"
+    android:layout_marginBottom="56dp">
 
-    <TextView
-        android:id="@+id/text_home"
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/search"
+        app:layout_constraintTop_toTopOf="parent"
+        app:queryHint="Search Anything From Here"
+        app:iconifiedByDefault="false"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
+        android:layout_height="wrap_content"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        app:layout_constraintTop_toBottomOf="@id/search"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:id="@+id/list"
+    />
+
+    <include layout="@layout/item_information_floating_action_menu" />
 </androidx.constraintlayout.widget.ConstraintLayout>

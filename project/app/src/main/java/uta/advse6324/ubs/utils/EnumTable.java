@@ -36,5 +36,7 @@ public class EnumTable {
         public static final String CONTENT = "content";
         public static final String LIKED = "liked";
         public static final String OWNER = "owner";
+        public static final String ADVERTISEMENT = "advertisement";
+        public static final String CONTACT = "contact";
     }
 }
