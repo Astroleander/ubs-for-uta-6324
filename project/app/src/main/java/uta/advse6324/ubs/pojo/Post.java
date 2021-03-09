@@ -1,8 +1,9 @@
 package uta.advse6324.ubs.pojo;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
-public class Post {
+public class Post implements Serializable {
 
     private String id;
     private String title;

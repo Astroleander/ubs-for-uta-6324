@@ -24,6 +24,12 @@
             android:name=".ui.registration.RegistrationActivity"
             android:label="Registration" >
         </activity>
+        <activity
+            android:name=".ui.main.profile.EditProfileActivity"
+            android:label="EditProfile">
+        </activity>
+        <activity android:name=".ui.main.profile.ViewProfileActivity"
+            android:label="ViewProfile"></activity>
 
     </application>
 

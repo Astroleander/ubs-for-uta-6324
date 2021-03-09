@@ -212,6 +212,24 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
+    public String editUser(User user){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues cv = new ContentValues();
+        cv.put(EnumTable.User.ID,       user.getId());
+        cv.put(EnumTable.User.USERNAME, user.getUsername());
+        cv.put(EnumTable.User.PASSWORD, user.getPassword());
+        cv.put(EnumTable.User.LASTNAME, user.getLastname());
+        cv.put(EnumTable.User.FIRSTNAME, user.getFirstname());
+        cv.put(EnumTable.User.PHONE,    user.getPhone());
+        cv.put(EnumTable.User.EMAIL,    user.getEmail());
+
+        long res = db.update(EnumTable.TABLE_LIST.USER, cv, "ID=?", new String[]{user.getId()});
+        if (res == -1)
+            return "failed";
+        else
+            return "User Profile Update Successfully";
+    }
 
 
 

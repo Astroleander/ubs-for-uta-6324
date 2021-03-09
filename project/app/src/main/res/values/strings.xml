@@ -14,6 +14,9 @@
     <string name="action_confirm">Confirm</string>
     <string name="action_type_again">type your password again</string>
     <string name="prompt_tel">type your phone number</string>
+    <string name="profile_edit">EDIT</string>
+    <string name="back">BACK</string>
+    <string name="view_profile">Personal Profile</string>
 
     <string name="title_activity_navigation">UBS</string>
     <string name="title_home">Home</string>
