@@ -110,6 +110,47 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
+    public User queryUserByUsername(String username){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.query(
+                EnumTable.TABLE_LIST.USER,
+                null,
+                EnumTable.User.USERNAME + "=\"" + username+"\"" ,
+                null,
+                null,
+                null,
+                null);
+        if (cursor.moveToNext()) {
+            String id = cursor.getString(cursor.getColumnIndex(EnumTable.User.ID));
+            String password = cursor.getString(cursor.getColumnIndex(EnumTable.User.PASSWORD));
+            String firstname = cursor.getString(cursor.getColumnIndex(EnumTable.User.FIRSTNAME));
+            String lastname = cursor.getString(cursor.getColumnIndex(EnumTable.User.LASTNAME));
+            String phone = cursor.getString(cursor.getColumnIndex(EnumTable.User.PHONE));
+            String email = cursor.getString(cursor.getColumnIndex(EnumTable.User.EMAIL));
+
+            User user1 = new User(
+                    id,
+                    username,
+                    password,
+                    lastname,
+                    firstname,
+                    phone,
+                    email
+            );
+            return  user1;
+        }else{
+            User user1 = new User("null",
+                    "null",
+                    "null",
+                    "null",
+                    "null",
+                    "null",
+                    "null");
+            return user1;
+        }
+
+    }
+
     public boolean queryIdUniqe(String id){
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.query(

@@ -103,6 +103,40 @@ public class PostDBHelper extends DBHelper {
         return result.toArray(r);
     }
 
+    public Post queryPostByID(String id){
+        Post post = null;
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.query(
+                EnumTable.TABLE_LIST.POST,
+                null,
+                EnumTable.Post.ID + "=\"" + id+"\"" ,
+                null,
+                null,
+                null,
+                null);
+        if (cursor.moveToNext()) {
+            String owner = cursor.getString(cursor.getColumnIndex(EnumTable.Post.OWNER));
+            String title = cursor.getString(cursor.getColumnIndex(EnumTable.Post.TITLE));
+            String content = cursor.getString(cursor.getColumnIndex(EnumTable.Post.CONTENT));
+            int liked = cursor.getInt(cursor.getColumnIndex(EnumTable.Post.LIKED));
+            String post_date = cursor.getString(cursor.getColumnIndex(EnumTable.Post.POST_DATE));
+            String contact = cursor.getString(cursor.getColumnIndex(EnumTable.Post.CONTACT));
+            String advertisement = cursor.getString(cursor.getColumnIndex(EnumTable.Post.ADVERTISEMENT));
+            post = new Post(
+                    id,
+                    title,
+                    content,
+                    owner,
+                    contact,
+                    Boolean.valueOf(advertisement),
+                    liked,
+                    post_date
+            );
+        }
+        System.out.println(post.getId());
+        return post;
+    }
+
     public Post[] queryAllPost() {
         ArrayList<Post> result = new ArrayList<>();
         SQLiteDatabase db = this.getWritableDatabase();
@@ -137,5 +171,25 @@ public class PostDBHelper extends DBHelper {
         cursor.close();
         Post[] r = {};
         return result.toArray(r);
+    }
+
+    public String editPost(Post post) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues cv = new ContentValues();
+        cv.put(EnumTable.Post.ID,            post.getId());
+        cv.put(EnumTable.Post.TITLE,         post.getTitle());
+        cv.put(EnumTable.Post.CONTENT,       post.getContent());
+        cv.put(EnumTable.Post.LIKED,         post.getLiked());
+        cv.put(EnumTable.Post.OWNER,         post.getOwner());
+        cv.put(EnumTable.Post.CONTACT,       post.getContact());
+        cv.put(EnumTable.Post.ADVERTISEMENT, post.getAdvertisement());
+        cv.put(EnumTable.Post.POST_DATE,     post.getTimestamp());
+
+        long res = db.update(EnumTable.TABLE_LIST.POST, cv, "ID=?", new String[]{post.getId()});
+        if (res == -1)
+            return "failed";
+        else
+            return "Post Update Successfully";
     }
 }

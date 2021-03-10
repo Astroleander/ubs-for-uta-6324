@@ -33,6 +33,12 @@
         <activity android:name=".ui.main.profile.ViewProfileActivity"
             android:label="ViewProfile">
         </activity>
+        <activity android:name=".ui.main.profile.PostDetailActivity"
+            android:label="PostDetail"></activity>
+        <activity android:name=".ui.main.home.InformationDetailActivity"
+            android:label="InformationDetail"></activity>
+        <activity android:name=".ui.main.profile.EditPostActivity"
+            android:label="EditPost"></activity>
     </application>
 
 </manifest>

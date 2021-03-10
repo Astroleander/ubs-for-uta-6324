@@ -1,5 +1,6 @@
 package uta.advse6324.ubs.ui.main.home;
 
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -94,7 +95,9 @@ public class HomeListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 pv.view.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        // TODO: Replace next line with startActivity for detail
+                        Intent intent = new Intent(view.getContext(), InformationDetailActivity.class);
+                        intent.putExtra("INFORMATION", postList.get(position));
+                        view.getContext().startActivity(intent);
                         Toast.makeText(view.getContext(), "Click item" + position, Toast.LENGTH_SHORT).show();
                     }
                 });

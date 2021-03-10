@@ -79,7 +79,7 @@ public class ViewProfileActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(ViewProfileActivity.this, NavigationActivity.class);
                 intent.putExtra(LOGIN_USER_INFO, user);
-                intent.putExtra("VIEW_PROFILE", 3);
+                intent.putExtra("VIEW_PROFILE", 4);
                 startActivity(intent);
                 finish();
             }

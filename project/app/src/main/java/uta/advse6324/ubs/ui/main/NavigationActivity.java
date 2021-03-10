@@ -40,10 +40,15 @@ public class NavigationActivity extends AppCompatActivity {
     protected void onResume() {
         //Return from the edit profile page
         //Redirected to Profile Fragment
-        int id = this.getIntent().getIntExtra("VIEW_PROFILE",0);
-        if (id == 3){
+        int id3 = this.getIntent().getIntExtra("VIEW_PROFILE",0);
+        if (id3 == 4){
             BottomNavigationView navView = findViewById(R.id.nav_view);
-            navView.setSelectedItemId(navView.getMenu().getItem(id).getItemId());
+            navView.setSelectedItemId(navView.getMenu().getItem(id3-1).getItemId());
+        }
+        int id0 = this.getIntent().getIntExtra("INFORMATION_DETAIL",0);
+        if (id0 == 1){
+            BottomNavigationView navView = findViewById(R.id.nav_view);
+            navView.setSelectedItemId(navView.getMenu().getItem(id0-1).getItemId());
         }
         super.onResume();
     }
