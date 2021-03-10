@@ -12,12 +12,24 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context=".ui.main.profile.EditPostActivity">
 
+    <TextView
+        android:id="@+id/edit_post_titletv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text=" Title"
+        android:textSize="15sp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:selectAllOnFocus="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
     <EditText
         android:id="@+id/edit_post_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
         android:hint="Title"
         android:autofillHints="Title"
@@ -26,14 +38,27 @@
         android:inputType="text"
         android:selectAllOnFocus="true"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edit_post_titletv"/>
 
+    <TextView
+        android:id="@+id/edit_post_contenttv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text=" Content"
+        android:textSize="15sp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:selectAllOnFocus="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edit_post_title"/>
     <EditText
         android:id="@+id/edit_post_content"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
         android:hint="Content"
         android:autofillHints="Content"
@@ -43,14 +68,26 @@
         android:selectAllOnFocus="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_post_title"/>
+        app:layout_constraintTop_toBottomOf="@+id/edit_post_contenttv"/>
 
+    <TextView
+        android:id="@+id/edit_post_Likedtv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text=" Liked"
+        android:textSize="15sp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:selectAllOnFocus="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edit_post_content"/>
     <EditText
         android:id="@+id/edit_post_liked"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
         android:hint="Liked"
         android:autofillHints="Liked"
@@ -60,14 +97,26 @@
         android:selectAllOnFocus="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_post_content"/>
+        app:layout_constraintTop_toBottomOf="@+id/edit_post_Likedtv"/>
 
+    <TextView
+        android:id="@+id/edit_post_ownertv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text=" Owner"
+        android:textSize="15sp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:selectAllOnFocus="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edit_post_liked"/>
     <EditText
         android:id="@+id/edit_post_owner"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
         android:hint="Owner"
         android:autofillHints="Owner"
@@ -77,14 +126,26 @@
         android:selectAllOnFocus="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_post_liked"/>
+        app:layout_constraintTop_toBottomOf="@+id/edit_post_ownertv"/>
 
+    <TextView
+        android:id="@+id/edit_post_contacttv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text=" Contact"
+        android:textSize="15sp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:selectAllOnFocus="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edit_post_owner"/>
     <EditText
         android:id="@+id/edit_post_contact"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
         android:hint="Contact"
         android:autofillHints="Contact"
@@ -94,13 +155,26 @@
         android:selectAllOnFocus="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_post_owner"/>
+        app:layout_constraintTop_toBottomOf="@+id/edit_post_contacttv"/>
+
+    <TextView
+        android:id="@+id/edit_post_timestamptv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text=" Post Time"
+        android:textSize="15sp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:selectAllOnFocus="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edit_post_contact"/>
     <EditText
         android:id="@+id/edit_post_timestamp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
         android:hint="PostTime"
         android:autofillHints="PostTime"
@@ -110,7 +184,7 @@
         android:selectAllOnFocus="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_post_contact"/>
+        app:layout_constraintTop_toBottomOf="@+id/edit_post_timestamptv"/>
 
     <LinearLayout
         android:id="@+id/edit_post_button"
@@ -118,6 +192,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
         app:layout_constraintTop_toBottomOf="@id/edit_post_timestamp">
 

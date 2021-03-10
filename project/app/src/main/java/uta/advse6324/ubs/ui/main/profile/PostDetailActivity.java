@@ -19,7 +19,6 @@ import static uta.advse6324.ubs.ui.login.LoginActivity.LOGIN_USER_INFO;
 import static uta.advse6324.ubs.ui.main.profile.MyPostsListAdapter.DETAIL;
 
 public class PostDetailActivity extends AppCompatActivity {
-    private TextView tv_id;
     private TextView tv_title;
     private TextView tv_content;
     private TextView tv_liked;
@@ -71,7 +70,6 @@ public class PostDetailActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        tv_id = findViewById(R.id.post_detail_id);
         tv_title = findViewById(R.id.post_detail_title);
         tv_content = findViewById(R.id.post_detail_content);
         tv_liked = findViewById(R.id.post_detail_liked);

@@ -7,10 +7,13 @@
     android:layout_height="match_parent"
     tools:context=".ui.main.home.InformationDetailActivity">
 
+
     <TextView
-        android:id="@+id/information_detail_id"
+        android:id="@+id/information_detail_titletv"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:text=" Title"
+        android:textSize="15sp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
@@ -23,74 +26,143 @@
         android:id="@+id/information_detail_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:selectAllOnFocus="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/information_detail_titletv"/>
+
+
+    <TextView
+        android:id="@+id/information_detail_contenttv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text=" Content"
+        android:textSize="15sp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
         android:selectAllOnFocus="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/information_detail_id"/>
-
+        app:layout_constraintTop_toBottomOf="@+id/information_detail_title"/>
     <TextView
         android:id="@+id/information_detail_content"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:textSize="25sp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
         android:autofillHints="UTA ID"
         android:selectAllOnFocus="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/information_detail_title" />
+        app:layout_constraintTop_toBottomOf="@+id/information_detail_contenttv" />
 
+
+    <TextView
+        android:id="@+id/information_detail_likedtv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text=" Liked"
+        android:textSize="15sp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:selectAllOnFocus="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/information_detail_content"/>
     <TextView
         android:id="@+id/information_detail_liked"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:selectAllOnFocus="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/information_detail_likedtv" />
+
+
+    <TextView
+        android:id="@+id/information_detail_ownertv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text=" Owner"
+        android:textSize="15sp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
         android:selectAllOnFocus="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/information_detail_content" />
-
+        app:layout_constraintTop_toBottomOf="@+id/information_detail_liked"/>
     <TextView
         android:id="@+id/information_detail_owner"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:selectAllOnFocus="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/information_detail_ownertv" />
+
+
+    <TextView
+        android:id="@+id/information_detail_contacttv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text=" Contact"
+        android:textSize="15sp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
         android:selectAllOnFocus="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/information_detail_liked" />
-
+        app:layout_constraintTop_toBottomOf="@+id/information_detail_owner"/>
     <TextView
         android:id="@+id/information_detail_contact"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:selectAllOnFocus="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/information_detail_contacttv" />
+
+    <TextView
+        android:id="@+id/information_detail_timestamptv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text=" Post Time"
+        android:textSize="15sp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
         android:selectAllOnFocus="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/information_detail_owner" />
-
+        app:layout_constraintTop_toBottomOf="@+id/information_detail_contact"/>
     <TextView
         android:id="@+id/information_detail_timestamp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:textSize="25sp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
         android:selectAllOnFocus="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/information_detail_contact" />
+        app:layout_constraintTop_toBottomOf="@+id/information_detail_timestamptv" />
 
     <Button
         android:id="@+id/information_detail_back"
@@ -104,6 +176,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/information_detail_contact" />
+        app:layout_constraintTop_toBottomOf="@+id/information_detail_timestamp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

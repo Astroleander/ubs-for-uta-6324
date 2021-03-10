@@ -8,9 +8,11 @@
     tools:context=".ui.main.profile.ViewProfileActivity">
 
     <TextView
-        android:id="@+id/profile_view_id"
+        android:id="@+id/profile_view_idtv"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:text=" University ID"
+        android:textSize="15sp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
@@ -18,11 +20,25 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
-        android:id="@+id/profile_view_username"
+        android:id="@+id/profile_view_id"
+        android:textSize="25sp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:selectAllOnFocus="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_view_idtv"/>
+
+
+    <TextView
+        android:id="@+id/profile_view_usernametv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text=" Username"
+        android:textSize="15sp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
@@ -32,53 +48,118 @@
         app:layout_constraintTop_toBottomOf="@+id/profile_view_id"/>
 
     <TextView
-        android:id="@+id/profile_view_lastname"
+        android:id="@+id/profile_view_username"
+        android:textSize="25sp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:selectAllOnFocus="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_view_usernametv"/>
+
+    <TextView
+        android:id="@+id/profile_view_lastnametv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text=" Lastname"
+        android:textSize="15sp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:selectAllOnFocus="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_view_username"/>
+    <TextView
+        android:id="@+id/profile_view_lastname"
+        android:textSize="25sp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:autofillHints="UTA ID"
         android:selectAllOnFocus="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profile_view_username" />
+        app:layout_constraintTop_toBottomOf="@+id/profile_view_lastnametv" />
 
+    <TextView
+        android:id="@+id/profile_view_firstnametv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text=" Firstname"
+        android:textSize="15sp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:selectAllOnFocus="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_view_lastname"/>
     <TextView
         android:id="@+id/profile_view_firstname"
+        android:textSize="25sp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:selectAllOnFocus="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_view_firstnametv" />
+
+    <TextView
+        android:id="@+id/profile_view_phonetv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text=" Phone"
+        android:textSize="15sp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
         android:selectAllOnFocus="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profile_view_lastname" />
-
+        app:layout_constraintTop_toBottomOf="@+id/profile_view_firstname"/>
     <TextView
         android:id="@+id/profile_view_phone"
+        android:textSize="25sp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
         android:selectAllOnFocus="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profile_view_firstname" />
+        app:layout_constraintTop_toBottomOf="@+id/profile_view_phonetv" />
+
 
     <TextView
-        android:id="@+id/profile_view_email"
+        android:id="@+id/profile_view_emailtv"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:text=" Email"
+        android:textSize="15sp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
         android:selectAllOnFocus="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profile_view_phone" />
+        app:layout_constraintTop_toBottomOf="@+id/profile_view_phone"/>
+    <TextView
+        android:id="@+id/profile_view_email"
+        android:textSize="25sp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:selectAllOnFocus="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_view_emailtv" />
 
     <LinearLayout
         android:id="@+id/view_profile_button"
@@ -86,6 +167,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
         app:layout_constraintTop_toBottomOf="@id/profile_view_email">
 
