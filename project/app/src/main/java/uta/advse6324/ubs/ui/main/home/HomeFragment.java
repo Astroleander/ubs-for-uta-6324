@@ -15,8 +15,6 @@ import android.widget.Toast;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.function.Predicate;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -29,8 +27,8 @@ import uta.advse6324.ubs.R;
 import uta.advse6324.ubs.pojo.Post;
 import uta.advse6324.ubs.pojo.User;
 import uta.advse6324.ubs.ui.main.profile.ProfileMyPostsActivity;
+import uta.advse6324.ubs.ui.ReleaseNewInfo.ReleaseNewInformation;
 
-import static android.content.ContentValues.TAG;
 import static uta.advse6324.ubs.ui.login.LoginActivity.LOGIN_USER_INFO;
 
 public class HomeFragment extends Fragment {
@@ -89,7 +87,16 @@ public class HomeFragment extends Fragment {
         fabCreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // TODO: add your listener to start the "new post" activity
+                try {
+                    User user = (User) getActivity().getIntent().getSerializableExtra(LOGIN_USER_INFO);
+                    Intent intent;
+                    intent = new Intent(getActivity(), ReleaseNewInformation.class);
+                    intent.putExtra(LOGIN_USER_INFO, user);
+                    startActivity(intent);
+                } catch (Exception e){
+                    Log.e("EROERROR", "onClick: ", e);
+                    Toast.makeText(root.getContext(), "Load user info failed, try login again", Toast.LENGTH_LONG).show();
+                }
             }
         });
 

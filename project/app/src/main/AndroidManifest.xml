@@ -39,6 +39,7 @@
             android:label="InformationDetail"></activity>
         <activity android:name=".ui.main.profile.EditPostActivity"
             android:label="EditPost"></activity>
+        <activity android:name=".ui.ReleaseNewInfo.ReleaseNewInformation" />
     </application>
 
 </manifest>
