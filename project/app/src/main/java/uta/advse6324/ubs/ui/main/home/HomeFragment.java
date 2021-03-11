@@ -54,6 +54,19 @@ public class HomeFragment extends Fragment {
         return root;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.d("HomeFragment", "[onResume]");
+        homeViewModel.getList().observe(getViewLifecycleOwner(), new Observer<ArrayList<Post>>() {
+            @Override
+            public void onChanged(@Nullable ArrayList<Post> arr) {
+                list.setAdapter(new HomeListAdapter(arr));
+                list.setLayoutManager(new LinearLayoutManager(root.getContext()));
+            }
+        });
+    }
+
     private void initSearch() {
         SearchView searchView = root.findViewById(R.id.search);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
