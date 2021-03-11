@@ -61,30 +61,6 @@
 
 
 
-    <TextView
-        android:id="@+id/post_detail_likedtv"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text=" Liked"
-        android:textSize="15sp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="24dp"
-        android:selectAllOnFocus="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/post_detail_content"/>
-    <TextView
-        android:id="@+id/post_detail_liked"
-        android:textSize="25sp"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        android:selectAllOnFocus="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/post_detail_likedtv" />
 
     <TextView
         android:id="@+id/post_detail_ownertv"
@@ -98,7 +74,7 @@
         android:selectAllOnFocus="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/post_detail_liked"/>
+        app:layout_constraintTop_toBottomOf="@+id/post_detail_content"/>
     <TextView
         android:id="@+id/post_detail_owner"
         android:textSize="25sp"

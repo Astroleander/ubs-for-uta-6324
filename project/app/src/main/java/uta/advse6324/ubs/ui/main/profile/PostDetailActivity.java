@@ -21,7 +21,6 @@ import static uta.advse6324.ubs.ui.main.profile.MyPostsListAdapter.DETAIL;
 public class PostDetailActivity extends AppCompatActivity {
     private TextView tv_title;
     private TextView tv_content;
-    private TextView tv_liked;
     private TextView tv_owner;
     private TextView tv_contact;
     private TextView tv_timestamp;
@@ -72,7 +71,6 @@ public class PostDetailActivity extends AppCompatActivity {
     private void initView() {
         tv_title = findViewById(R.id.post_detail_title);
         tv_content = findViewById(R.id.post_detail_content);
-        tv_liked = findViewById(R.id.post_detail_liked);
         tv_owner = findViewById(R.id.post_detail_owner);
         tv_contact = findViewById(R.id.post_detail_contact);
         tv_timestamp = findViewById(R.id.post_detail_timestamp);
@@ -82,7 +80,6 @@ public class PostDetailActivity extends AppCompatActivity {
         tv_content.setText(post.getContent());
         tv_owner.setText(post.getOwner());
         tv_contact.setText(post.getContact());
-        tv_liked.setText(post.getLiked()+"");
         tv_timestamp.setText(post.getTimestamp());
     }
 }

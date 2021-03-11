@@ -22,7 +22,6 @@ public class EditPostActivity extends AppCompatActivity {
 
     private EditText et_title;
     private EditText et_content;
-    private EditText et_liked;
     private EditText et_owner;
     private EditText et_contact;
     private EditText et_time;
@@ -89,7 +88,6 @@ public class EditPostActivity extends AppCompatActivity {
     private void initView() {
         et_title = findViewById(R.id.edit_post_title);
         et_content = findViewById(R.id.edit_post_content);
-        et_liked = findViewById(R.id.edit_post_liked);
         et_owner = findViewById(R.id.edit_post_owner);
         et_contact = findViewById(R.id.edit_post_contact);
         et_time = findViewById(R.id.edit_post_timestamp);
@@ -97,12 +95,10 @@ public class EditPostActivity extends AppCompatActivity {
         bt_back = findViewById(R.id.edit_post_back);
         et_title.setText(post.getTitle());
         et_content.setText(post.getContent());
-        et_liked.setText(post.getLiked()+"");
         et_owner.setText(post.getOwner());
         et_contact.setText(post.getContact());
         et_time.setText(post.getTimestamp());
         et_time.setEnabled(false);
-        et_liked.setEnabled(false);
         et_owner.setEnabled(false);
         et_contact.setEnabled(false);
     }

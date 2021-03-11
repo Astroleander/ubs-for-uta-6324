@@ -62,31 +62,6 @@
         app:layout_constraintTop_toBottomOf="@+id/information_detail_contenttv" />
 
 
-    <TextView
-        android:id="@+id/information_detail_likedtv"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text=" Liked"
-        android:textSize="15sp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="24dp"
-        android:selectAllOnFocus="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/information_detail_content"/>
-    <TextView
-        android:id="@+id/information_detail_liked"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:textSize="25sp"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        android:selectAllOnFocus="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/information_detail_likedtv" />
-
 
     <TextView
         android:id="@+id/information_detail_ownertv"
@@ -100,7 +75,7 @@
         android:selectAllOnFocus="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/information_detail_liked"/>
+        app:layout_constraintTop_toBottomOf="@+id/information_detail_content"/>
     <TextView
         android:id="@+id/information_detail_owner"
         android:layout_width="0dp"

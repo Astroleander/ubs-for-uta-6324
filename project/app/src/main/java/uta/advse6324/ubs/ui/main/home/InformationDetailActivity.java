@@ -23,7 +23,6 @@ public class InformationDetailActivity extends AppCompatActivity {
     private TextView tv_id;
     private TextView tv_title;
     private TextView tv_content;
-    private TextView tv_liked;
     private TextView tv_owner;
     private TextView tv_contact;
     private TextView tv_timestamp;
@@ -56,10 +55,8 @@ public class InformationDetailActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        tv_id = findViewById(R.id.information_detail_id);
         tv_title = findViewById(R.id.information_detail_title);
         tv_content = findViewById(R.id.information_detail_content);
-        tv_liked = findViewById(R.id.information_detail_liked);
         tv_owner = findViewById(R.id.information_detail_owner);
         tv_contact = findViewById(R.id.information_detail_contact);
         tv_timestamp = findViewById(R.id.information_detail_timestamp);
@@ -68,7 +65,6 @@ public class InformationDetailActivity extends AppCompatActivity {
         tv_content.setText(post.getContent());
         tv_owner.setText(post.getOwner());
         tv_contact.setText(post.getContact());
-        tv_liked.setText(post.getLiked()+"");
         tv_timestamp.setText(post.getTimestamp());
     }
 }
