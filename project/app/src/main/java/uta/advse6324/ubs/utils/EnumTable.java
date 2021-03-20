@@ -9,6 +9,8 @@ public class EnumTable {
     public static final class TABLE_LIST {
         public static String USER = "tbl_user";
         public static String POST = "tbl_post";
+        public static String MERCHANDISE = "tbl_mer";
+        public static String TRANSCATION = "tbl_tra";
     }
 
     public static final class User {
@@ -38,5 +40,27 @@ public class EnumTable {
         public static final String OWNER = "owner";
         public static final String ADVERTISEMENT = "advertisement";
         public static final String CONTACT = "contact";
+    }
+
+    public static final class Merchandise{
+        public static final String ID= "id";
+        public static final String NAME = "name";
+        public static final String DESCRIPTION = "description";
+        public static final String PICTURE = "picture";
+        public static final String PRICE = "price";
+        public static final String AVAILABLE = "availabe_status";
+        public static final String SELL_LEND = "sell_lend";
+        public static final String DATE = "date";
+        public static final String OWNER_ID = "owner_id";
+
+    }
+
+    public static final class Transcation{
+        public static String USERID = "userid";
+        public static String MERID = "merid";
+        public static String DATE = "date";
+        public static String BUY_BORROW = "buy_borrow";
+        public static String PAY_STATUS = "pay_status";
+
     }
 }

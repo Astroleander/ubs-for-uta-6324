@@ -1,15 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="uta.advse6324.ubs">
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.WRITE_MEDIA_STORAGE"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_INTERNAL_STORAGE" />
+
+
+
 
     <application
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:requestLegacyExternalStorage="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.main.market.MerchandiseDetail"></activity>
-        <activity android:name=".ui.main.profile.ProfileMyPostsActivity"></activity>
+        <activity android:name=".ui.main.market.Sell_Activity"></activity>
+        <activity android:name=".ui.main.market.MerchandiseDetail" />
+        <activity android:name=".ui.main.profile.ProfileMyPostsActivity" />
         <activity android:name=".ui.login.ChangepwActivity" />
         <activity android:name=".ui.login.ForgetpwActivity" />
         <activity
@@ -24,13 +39,13 @@
         </activity>
         <activity
             android:name=".ui.registration.RegistrationActivity"
-            android:label="Registration"></activity>
+            android:label="Registration" />
         <activity
             android:name=".ui.main.profile.EditProfileActivity"
-            android:label="EditProfile"></activity>
+            android:label="EditProfile" />
         <activity
             android:name=".ui.main.profile.ViewProfileActivity"
-            android:label="ViewProfile"></activity>
+            android:label="ViewProfile" />
         <activity
             android:name=".ui.main.profile.PostDetailActivity"
             android:label="PostDetail" />
