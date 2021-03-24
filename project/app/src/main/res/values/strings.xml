@@ -38,5 +38,5 @@
     <string name="hint_contact">Contact</string>
     <string name="hint_topic">Topic</string>
     <string name="hint_content">Content</string>
-
+    <string name="buy_borrow">BUY or BORROW</string>
 </resources>
