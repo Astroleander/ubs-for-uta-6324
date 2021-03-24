@@ -34,9 +34,26 @@ public class ProfileFragment extends Fragment {
         user = (User) getActivity().getIntent().getSerializableExtra(LOGIN_USER_INFO);
         initMyPostsButton();
         initViewProfileButton();
+        initMyBiLling();
         return root;
     }
-
+    private void initMyBiLling() {
+        final Button myBilling = root.findViewById(R.id.my_Billings);
+        myBilling.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    Intent intent;
+                    intent = new Intent(getActivity(), ProfileMyBillings.class);
+                    intent.putExtra(LOGIN_USER_INFO, user);
+                    startActivity(intent);
+                } catch (Exception e){
+                    Log.e("EROERROR", "onClick: ", e);
+                    Toast.makeText(root.getContext(), "Load user info failed, try login again", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+    }
     private void initMyPostsButton() {
         final Button myPosts = root.findViewById(R.id.my_posts);
         myPosts.setOnClickListener(new View.OnClickListener() {

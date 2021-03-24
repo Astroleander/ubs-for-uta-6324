@@ -39,4 +39,7 @@
     <string name="hint_topic">Topic</string>
     <string name="hint_content">Content</string>
     <string name="buy_borrow">BUY or BORROW</string>
+    <string name="my_billings">My Billing</string>
+    <string name="title_btn_profile_my_Blings">My Billings</string>
+    title_btn_profile_my_Blings
 </resources>

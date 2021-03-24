@@ -21,4 +21,12 @@
         app:layout_constraintTop_toBottomOf="@id/view_profile"
         android:text="@string/title_btn_profile_my_posts"
         />
+
+    <Button
+        android:id="@+id/my_Billings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/my_posts"
+        android:text="@string/my_billings"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>
