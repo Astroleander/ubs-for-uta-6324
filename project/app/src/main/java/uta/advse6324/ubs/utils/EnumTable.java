@@ -11,6 +11,7 @@ public class EnumTable {
         public static String POST = "tbl_post";
         public static String MERCHANDISE = "tbl_mer";
         public static String TRANSCATION = "tbl_tra";
+        public static String Billing = "tbl_Bil";
     }
 
     public static final class User {
@@ -52,6 +53,13 @@ public class EnumTable {
         public static final String SELL_LEND = "sell_lend";
         public static final String DATE = "date";
         public static final String OWNER_ID = "owner_id";
+
+    }
+    public static final class Billing{
+        public static final String ID= "id";
+        public static final String NAME = "name";
+        public static final String ADDRESS = "address";
+        public static final String USERID = "USERId";
 
     }
 
