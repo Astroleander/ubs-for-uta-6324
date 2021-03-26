@@ -41,5 +41,9 @@
     <string name="buy_borrow">BUY or BORROW</string>
     <string name="my_billings">My Billing</string>
     <string name="title_btn_profile_my_Blings">My Billings</string>
-    title_btn_profile_my_Blings
+    <string name="btn_addonebilling">Add</string>
+    <string name="hint_cardId">card Id</string>
+    <string name="hint_username">user name</string>
+    <string name="hint_userId">user Id</string>
+    <string name="hint_Address">Address</string>
 </resources>

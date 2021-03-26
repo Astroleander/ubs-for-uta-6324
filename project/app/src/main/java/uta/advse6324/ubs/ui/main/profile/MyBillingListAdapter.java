@@ -29,7 +29,7 @@ public class MyBillingListAdapter extends RecyclerView.Adapter<RecyclerView.View
         private final TextView name;
         private final TextView address;
         private final TextView userId;
-        private final Button detail;
+//        private final Button detail;
         private final Button delete;
 
         public BillingViewHolder(@NonNull View itemView) {
@@ -39,7 +39,7 @@ public class MyBillingListAdapter extends RecyclerView.Adapter<RecyclerView.View
             address = itemView.findViewById(R.id.billing_address);
             userId = itemView.findViewById(R.id.billing_userId);
             delete = itemView.findViewById(R.id.my_billing_btn_delete);
-            detail = itemView.findViewById(R.id.my_billing_btn_detail);
+//            detail = itemView.findViewById(R.id.my_billing_btn_detail);
         }
     }
 
