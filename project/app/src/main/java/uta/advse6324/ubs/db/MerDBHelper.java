@@ -16,18 +16,29 @@ public class MerDBHelper extends DBHelper {
     public MerDBHelper(@Nullable Context context) {
         super(context);
     }
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+//        Log.d("DBHelper", "create User TABLE");
+        db.execSQL(MER_CREATE);
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL("DROP TABLE IF EXISTS " + EnumTable.TABLE_LIST.MERCHANDISE);
+        onCreate(db);
+    }
 
 
 
     private static final String MER_CREATE =
-            "create table "+ EnumTable.TABLE_LIST.MERCHANDISE + " (" +
-                    EnumTable.Merchandise.ID           + " varchar(10) primary key, " +
+            "create table if not exists "+ EnumTable.TABLE_LIST.MERCHANDISE + " (" +
+                    EnumTable.Merchandise.ID           + " timestamp default CURRENT_TIMESTAMP primary key, " +
                     EnumTable.Merchandise.NAME + " varchar(30) not null," +
                     EnumTable.Merchandise.DESCRIPTION +" varchar(30) not null, "+
                     EnumTable.Merchandise.PICTURE + " blob not null, " +
-                    EnumTable.Merchandise.PRICE + " long ," +
-                    EnumTable.Merchandise.AVAILABLE + " bollean not null ,"+
-                    EnumTable.Merchandise.SELL_LEND + "bollean not null," +
+                    EnumTable.Merchandise.PRICE + " varchar(10)," +
+                    EnumTable.Merchandise.AVAILABLE + " bollean not null,"+
+                    EnumTable.Merchandise.SELL_LEND + " bollean not null," +
                     EnumTable.Merchandise.DATE + " timestamp default CURRENT_TIMESTAMP not null," +
                     EnumTable.Merchandise.OWNER_ID +" varchar(10)" +
 
@@ -37,7 +48,7 @@ public class MerDBHelper extends DBHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues cv = new ContentValues();
-        cv.put(EnumTable.Merchandise.ID,mer.getId());
+//        cv.put(EnumTable.Merchandise.ID,mer.getId());
         cv.put(EnumTable.Merchandise.NAME,mer.getName());
         cv.put(EnumTable.Merchandise.DESCRIPTION,mer.getDescription());
         cv.put(EnumTable.Merchandise.PICTURE,mer.getPicture());
@@ -51,17 +62,7 @@ public class MerDBHelper extends DBHelper {
     }
 
 
-    @Override
-    public void onCreate(SQLiteDatabase db) {
-//        Log.d("DBHelper", "create User TABLE");
-        db.execSQL(MER_CREATE);
-    }
 
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS " + EnumTable.TABLE_LIST.MERCHANDISE);
-        onCreate(db);
-    }
 
 
 }
