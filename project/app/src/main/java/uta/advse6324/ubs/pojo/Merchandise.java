@@ -1,11 +1,13 @@
 package uta.advse6324.ubs.pojo;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import java.io.Serializable;
 
+import uta.advse6324.ubs.utils.DBHelper;
 import uta.advse6324.ubs.utils.EnumTable;
 
 public class Merchandise implements Serializable {
@@ -120,7 +122,13 @@ public class Merchandise implements Serializable {
         this.available_status = available_status;
     }
 
-
+    public User getOwner(Context ctx) {
+        DBHelper dbHelper = new DBHelper(ctx);
+//        dbHelper.onCreate(dbHelper.getReadableDatabase());
+        User u = dbHelper.queryUser(this.owner_id);
+        dbHelper.close();
+        return u;
+    }
 
 
 
