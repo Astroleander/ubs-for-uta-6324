@@ -93,7 +93,7 @@ public class MerListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), MerchandiseDetail.class);
-                intent.putExtra("INFORMATION", merchandiseList.get(position));
+                intent.putExtra("Merchandise", merchandiseList.get(position));
                 view.getContext().startActivity(intent);
                 Toast.makeText(view.getContext(), "Click item" + position, Toast.LENGTH_SHORT).show();
             }
