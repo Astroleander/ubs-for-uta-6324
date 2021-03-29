@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import uta.advse6324.ubs.R;
 import uta.advse6324.ubs.pojo.Merchandise;
 import uta.advse6324.ubs.pojo.Post;
+import uta.advse6324.ubs.pojo.User;
 import uta.advse6324.ubs.ui.main.home.InformationDetailActivity;
 
 import static android.content.ContentValues.TAG;
@@ -51,10 +52,12 @@ public class MerListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     final static int LEND_TYPE = 2;
     private final ArrayList<Merchandise> merchandiseList;
     private final Context context;
+    private final User user;
 
-    public MerListAdapter(ArrayList<Merchandise> list, Context ctx) {
+    public MerListAdapter(ArrayList<Merchandise> list, Context ctx, User u) {
         merchandiseList = list;
         context = ctx;
+        user = u;
     }
 
     @Override
@@ -94,6 +97,7 @@ public class MerListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), MerchandiseDetail.class);
                 intent.putExtra("Merchandise", merchandiseList.get(position));
+                intent.putExtra("User", user);
                 view.getContext().startActivity(intent);
                 Toast.makeText(view.getContext(), "Click item" + position, Toast.LENGTH_SHORT).show();
             }

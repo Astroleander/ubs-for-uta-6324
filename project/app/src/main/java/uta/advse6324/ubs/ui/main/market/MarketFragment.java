@@ -40,11 +40,13 @@ public class MarketFragment extends Fragment {
 
     private FloatingActionButton fabSell;
     private FloatingActionButton fabMcd;
+    private User user;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         marketViewModel = new ViewModelProvider(this).get(MarketViewModel.class);
         root = inflater.inflate(R.layout.fragment_market, container, false);
+        user = (User) getActivity().getIntent().getSerializableExtra(LOGIN_USER_INFO);
 
         initFABMenu();
         initFAB();
@@ -61,7 +63,7 @@ public class MarketFragment extends Fragment {
         marketViewModel.getList().observe(getViewLifecycleOwner(), new Observer<ArrayList<Merchandise>>() {
             @Override
             public void onChanged(@Nullable ArrayList<Merchandise> arr) {
-                list.setAdapter(new MerListAdapter(arr, getContext()));
+                list.setAdapter(new MerListAdapter(arr, getContext(), user));
                 list.setLayoutManager(new LinearLayoutManager(root.getContext()));
             }
         });
@@ -82,14 +84,14 @@ public class MarketFragment extends Fragment {
                         result.add(p);
                     }
                 }
-                list.setAdapter(new MerListAdapter(result, getContext()));
+                list.setAdapter(new MerListAdapter(result, getContext(), user));
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String s) {
                 if (s.length() < 1) {
-                    list.setAdapter(new MerListAdapter(marketViewModel.getList().getValue(), getContext()));
+                    list.setAdapter(new MerListAdapter(marketViewModel.getList().getValue(), getContext(), user));
                 }
                 return false;
             }
@@ -117,7 +119,6 @@ public class MarketFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 try {
-                    User user = (User) getActivity().getIntent().getSerializableExtra(LOGIN_USER_INFO);
                     Intent intent;
                     // TODO: replace activity
                     intent = new Intent(getActivity(), ProfileMyPostsActivity.class);
@@ -176,7 +177,7 @@ public class MarketFragment extends Fragment {
         marketViewModel.getList().observe(getViewLifecycleOwner(), new Observer<ArrayList<Merchandise>>() {
             @Override
             public void onChanged(@Nullable ArrayList<Merchandise> arr) {
-                list.setAdapter(new MerListAdapter(arr, getContext()));
+                list.setAdapter(new MerListAdapter(arr, getContext(), user));
                 list.setLayoutManager(new LinearLayoutManager(root.getContext()));
             }
         });
