@@ -1,30 +1,28 @@
-package uta.advse6324.ubs.ui.main.market;
+package uta.advse6324.ubs.ui.main.profile;
 
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import uta.advse6324.ubs.R;
 import uta.advse6324.ubs.pojo.Merchandise;
-import uta.advse6324.ubs.pojo.Post;
 import uta.advse6324.ubs.pojo.User;
-import uta.advse6324.ubs.ui.main.home.InformationDetailActivity;
+import uta.advse6324.ubs.ui.main.market.MerchandiseDetail;
 
-import static android.content.ContentValues.TAG;
+public class MyBuyOrBorrowListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+    public static final String DETAIL = "Merchandise";
+    private final User user;
 
-public class MerListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView name;
         private final TextView description;
@@ -33,7 +31,7 @@ public class MerListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         private final TextView date;
         private final TextView price;
         private final ImageView image;
-        private final TextView tag;
+        private final Button detail;
 
         private final View view;
         public ViewHolder(@NonNull View itemView) {
@@ -46,7 +44,7 @@ public class MerListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             owner_contact = itemView.findViewById(R.id.mer_contact);
             price = itemView.findViewById(R.id.mer_price);
             date = itemView.findViewById(R.id.mer_post_date);
-            tag = itemView.findViewById(R.id.tag);
+            detail = itemView.findViewById(R.id.my_mer_btn_detail);
         }
     }
 
@@ -54,9 +52,8 @@ public class MerListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     final static int LEND_TYPE = 2;
     private final ArrayList<Merchandise> merchandiseList;
     private final Context context;
-    private final User user;
 
-    public MerListAdapter(ArrayList<Merchandise> list, Context ctx, User u) {
+    public MyBuyOrBorrowListAdapter(ArrayList<Merchandise> list, Context ctx, User u) {
         merchandiseList = list;
         context = ctx;
         user = u;
@@ -75,7 +72,7 @@ public class MerListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_market, parent, false));
+        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_profile_my_buy_or_borrow, parent, false));
     }
 
     @Override
@@ -90,13 +87,6 @@ public class MerListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             vh.price.setText("for Free");
         }
         byte[] picArr = m.getPicture();
-        if (m.getSell_lend()) {
-            vh.tag.setText("Sell");
-            vh.tag.setBackgroundColor(context.getResources().getColor(R.color.colorSell));
-        } else {
-            vh.tag.setText("Lend");
-            vh.tag.setBackgroundColor(context.getResources().getColor(R.color.colorSell));
-        }
         vh.image.setImageBitmap(BitmapFactory.decodeByteArray(picArr, 0, picArr.length));
         vh.date.setText(m.getTimestamp());
         vh.owner_contact.setText(m.getOwner(context).getEmail());
@@ -108,7 +98,15 @@ public class MerListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 intent.putExtra("Merchandise", merchandiseList.get(position));
                 intent.putExtra("User", user);
                 view.getContext().startActivity(intent);
-                Toast.makeText(view.getContext(), "Click item" + position, Toast.LENGTH_SHORT).show();
+            }
+        });
+        vh.detail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), MerchandiseDetail.class);
+                intent.putExtra("Merchandise", merchandiseList.get(position));
+                intent.putExtra("User", user);
+                view.getContext().startActivity(intent);
             }
         });
         switch (holder.getItemViewType()) {

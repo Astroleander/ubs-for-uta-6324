@@ -29,21 +29,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/colorPrimaryText"
+                    android:layout_marginEnd="12dp"
                     android:textSize="@dimen/textsize_cardview_title"
                     />
-
-                <TextView
-                    android:id="@+id/tag"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/textsize_cardview_secoundary"
-                    android:textColor="@color/colorText"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"
-                    android:paddingTop="2dp"
-                    android:paddingBottom="4dp"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginEnd="4dp"/>
 
                 <TextView
                     android:id="@+id/mer_price"
@@ -51,7 +39,8 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/colorSecondaryText"
                     android:textSize="@dimen/textsize_cardview_secoundary"
-                    />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toRightOf="parent"/>
             </LinearLayout>
 
 
@@ -75,7 +64,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/mer_controller"
                 android:baselineAligned="false">
 
                 <LinearLayout
@@ -120,6 +109,32 @@
                         android:drawablePadding="8dp"
                         app:drawableLeftCompat="@drawable/ic_baseline_access_time_24" />
                 </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/mer_controller"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:orientation="horizontal">
+                <Button
+                    style="@style/FirstButton"
+                    android:id="@+id/my_mer_btn_detail"
+                    android:layout_width="0dp"
+                    android:layout_weight="8"
+                    android:layout_height="wrap_content"
+                    android:text="@string/btn_detail"
+                    />
+                <FrameLayout
+                    android:layout_width="10dp"
+                    android:layout_height="wrap_content"/>
+                <Button
+                    style="@style/WarnButton"
+                    android:id="@+id/my_mer_btn_delete"
+                    android:layout_width="0dp"
+                    android:layout_weight="8"
+                    android:layout_height="wrap_content"
+                    android:text="@string/btn_delete"
+                    />
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

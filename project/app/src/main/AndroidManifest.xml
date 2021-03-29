@@ -26,6 +26,8 @@
         <activity android:name=".ui.main.market.Sell_Activity" />
         <activity android:name=".ui.main.market.MerchandiseDetail" />
         <activity android:name=".ui.main.profile.ProfileMyPostsActivity" />
+        <activity android:name=".ui.main.profile.ProfileSellOrLendActivity" />
+        <activity android:name=".ui.main.profile.ProfileBuyOrBorrowActivity" />
         <activity android:name=".ui.login.ChangepwActivity" />
         <activity android:name=".ui.login.ForgetpwActivity" />
         <activity

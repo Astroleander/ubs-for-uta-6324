@@ -9,4 +9,7 @@
     <color name="colorPrimaryText">#212121</color>
     <color name="colorLightPrimary">#C5CAE9</color>
     <color name="colorWarning">#DD2245</color>
+
+    <color name="colorSell">#009688</color>
+    <color name="colorLend">#8bc34a</color>
 </resources>

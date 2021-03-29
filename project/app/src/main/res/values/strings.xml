@@ -49,4 +49,6 @@
     <string name="btn_my_sell_or_lend"><![CDATA[My Sells & Lends]]></string>
     <string name="btn_my_buy_or_borrow"><![CDATA[My Buy & Borrows]]></string>
     <string name="btn_my_merchandise">my merchandise</string>
+    <string name="title_btn_profile_my_buy_or_borrow">My Buy And Borrows</string>
+    <string name="title_btn_profile_my_sell_or_lend">My Sells and Lends</string>
 </resources>

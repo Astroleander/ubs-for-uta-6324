@@ -32,22 +32,20 @@ public class MarketViewModel extends AndroidViewModel {
         dbhelper = new MerDBHelper(getApplication().getApplicationContext());
         dbhelper.onCreate(dbhelper.getReadableDatabase());
 
-        Drawable d = getApplication().getDrawable(R.drawable.adv_02);
-        Bitmap bm = ((BitmapDrawable)d).getBitmap();
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        bm.compress(Bitmap.CompressFormat.JPEG, 100, stream);
-        byte[] blob= stream.toByteArray();
-
         Merchandise[] list = dbhelper.queryAllMerchandise();
         dbhelper.close();
         ArrayList<Merchandise> arr = new ArrayList<>(Arrays.asList(list));
-        arr.add(new Merchandise("Sell My Soul", "100$ for broken", blob, "", true, true, "1"));
-        arr.add(new Merchandise("Sell My Apple", "100$ for broken", blob, "", true, true, "1"));
-        arr.add(new Merchandise("Sell My Pen", "100$ for broken", blob, "", true, true, "1"));
         mMerList.setValue(arr);
     }
 
     public LiveData<ArrayList<Merchandise>> getList() {
+        dbhelper = new MerDBHelper(getApplication().getApplicationContext());
+        dbhelper.onCreate(dbhelper.getReadableDatabase());
+
+        Merchandise[] list = dbhelper.queryAllMerchandise();
+        dbhelper.close();
+        ArrayList<Merchandise> arr = new ArrayList<>(Arrays.asList(list));
+        mMerList.setValue(arr);
         return mMerList;
     }
 }

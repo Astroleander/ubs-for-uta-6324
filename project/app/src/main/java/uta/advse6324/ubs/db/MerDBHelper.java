@@ -111,5 +111,43 @@ public class MerDBHelper extends DBHelper {
         return result.toArray(r);
     }
 
+    public Merchandise[] queryMerchandiseByUserID(String uid) {
+        ArrayList<Merchandise> result = new ArrayList<>();
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.query(
+                EnumTable.TABLE_LIST.MERCHANDISE,
+                null,
+                EnumTable.Merchandise.OWNER_ID + "=\"" + uid +"\"" ,
+                null,
+                null,
+                null,
+                null);
+        while (cursor.moveToNext()) {
+            String id = cursor.getString(cursor.getColumnIndex(EnumTable.Merchandise.ID));
+            String name = cursor.getString(cursor.getColumnIndex(EnumTable.Merchandise.NAME));
+            String description = cursor.getString(cursor.getColumnIndex(EnumTable.Merchandise.DESCRIPTION));
 
+            byte[] picture = cursor.getBlob(cursor.getColumnIndex(EnumTable.Merchandise.PICTURE));
+            String price = cursor.getString(cursor.getColumnIndex(EnumTable.Merchandise.PRICE));
+            String availabe_status = cursor.getString(cursor.getColumnIndex(EnumTable.Merchandise.AVAILABLE));
+            String sell_lend = cursor.getString(cursor.getColumnIndex(EnumTable.Merchandise.SELL_LEND));
+            String post_date = cursor.getString(cursor.getColumnIndex(EnumTable.Merchandise.DATE));
+            String owner_id = cursor.getString(cursor.getColumnIndex(EnumTable.Merchandise.OWNER_ID));
+            Merchandise merchandise = new Merchandise(
+                    id,
+                    name,
+                    description,
+                    picture,
+                    price,
+                    Boolean.valueOf(availabe_status),
+                    Boolean.valueOf(sell_lend),
+                    post_date,
+                    owner_id
+            );
+            result.add(merchandise);
+        }
+        cursor.close();
+        Merchandise[] r = {};
+        return result.toArray(r);
+    }
 }

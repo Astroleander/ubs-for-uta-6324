@@ -35,6 +35,7 @@ public class ProfileFragment extends Fragment {
         initMyPostsButton();
         initViewProfileButton();
         initMyBiLling();
+        initMerchandiseButtons();
         return root;
     }
     private void initMyBiLling() {
@@ -79,6 +80,38 @@ public class ProfileFragment extends Fragment {
                 Intent intent = new Intent(getActivity(), ViewProfileActivity.class);
                 intent.putExtra(PROFILE_TOKEN, user);
                 startActivityForResult(intent, 1);
+            }
+        });
+    }
+    private void initMerchandiseButtons() {
+        Button sellOrLend = root.findViewById(R.id.my_send_or_lend);
+        Button buyOrBorrow = root.findViewById(R.id.my_buy_or_borrow);
+        sellOrLend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    Intent intent;
+                    intent = new Intent(getActivity(), ProfileSellOrLendActivity.class);
+                    intent.putExtra(LOGIN_USER_INFO, user);
+                    startActivity(intent);
+                } catch (Exception e){
+                    Log.e("EROERROR", "onClick: ", e);
+                    Toast.makeText(root.getContext(), "Load user info failed, try login again", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+        buyOrBorrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    Intent intent;
+                    intent = new Intent(getActivity(), ProfileBuyOrBorrowActivity.class);
+                    intent.putExtra(LOGIN_USER_INFO, user);
+                    startActivity(intent);
+                } catch (Exception e){
+                    Log.e("EROERROR", "onClick: ", e);
+                    Toast.makeText(root.getContext(), "Load user info failed, try login again", Toast.LENGTH_LONG).show();
+                }
             }
         });
     }
