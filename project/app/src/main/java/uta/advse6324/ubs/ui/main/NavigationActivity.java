@@ -51,7 +51,7 @@ public class NavigationActivity extends AppCompatActivity {
             navView.setSelectedItemId(navView.getMenu().getItem(id0-1).getItemId());
         }
         int id2 = this.getIntent().getIntExtra("Merchandise_DETAIL",0);
-        if (id2 == 2){
+        if (id2 == 3){
             BottomNavigationView navView = findViewById(R.id.nav_view);
             navView.setSelectedItemId(navView.getMenu().getItem(id2-1).getItemId());
         }

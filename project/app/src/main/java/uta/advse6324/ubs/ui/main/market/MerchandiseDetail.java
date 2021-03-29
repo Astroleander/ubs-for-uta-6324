@@ -2,9 +2,12 @@ package uta.advse6324.ubs.ui.main.market;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import uta.advse6324.ubs.R;
@@ -27,13 +30,14 @@ public class MerchandiseDetail extends AppCompatActivity {
     private Button bt_buyorborrow;
     private Merchandise merchandise;
     private User user;
+    private ImageView image_merchandies;
 
     private DBHelper dbHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_merchandise_detail);
-        merchandise = (Merchandise) this.getIntent().getSerializableExtra("Merchanise");
+        merchandise = (Merchandise) this.getIntent().getSerializableExtra("Merchandise");
         user = (User) this.getIntent().getSerializableExtra("User");
         this.initView();
         this.submitBack();
@@ -47,7 +51,7 @@ public class MerchandiseDetail extends AppCompatActivity {
                 //  todo: NavigationActivity.class need change to Buy_BorrowActivity.class
                 Intent intent = getIntent().setClass(MerchandiseDetail.this, buy_borrow.class);
                 intent.putExtra("Merchandise", merchandise);
-                intent.putExtra("User", merchandise);
+                intent.putExtra("User", user);
                 startActivity(intent);
                 finish();
             }
@@ -60,11 +64,18 @@ public class MerchandiseDetail extends AppCompatActivity {
                 DBHelper dbHelper = new DBHelper(view.getContext());
                 Intent intent = getIntent().setClass(MerchandiseDetail.this, NavigationActivity.class);
                 intent.putExtra(LOGIN_USER_INFO, dbHelper.queryUser(merchandise.getId()));
-                intent.putExtra("Merchandise_DETAIL",2);
+                intent.putExtra("Merchandise_DETAIL",3);
                 startActivity(intent);
                 finish();
             }
         });
+    }
+    public Bitmap Bytes2Bimap(byte[] b) {
+        if (b.length != 0) {
+            return BitmapFactory.decodeByteArray(b, 0, b.length);
+        } else {
+            return null;
+        }
     }
     private void initView() {
         dbHelper = new DBHelper(this);
@@ -75,9 +86,12 @@ public class MerchandiseDetail extends AppCompatActivity {
         tv_publisher = findViewById(R.id.Merchandise_detail_publisher);
         bt_back = findViewById(R.id.Merchandise_detail_back);
         bt_buyorborrow = findViewById(R.id.Merchandise_detail_buy);
+        image_merchandies = findViewById(R.id.imageView2);
         tv_title.setText(merchandise.getName());
+//        String tmp = String.valueOf(merchandise.getPrice());
         tv_price.setText(String.valueOf(merchandise.getPrice()));
         tv_description.setText(merchandise.getDescription());
         tv_publisher.setText(owner.getUsername());
+        image_merchandies.setImageBitmap(Bytes2Bimap(merchandise.getPicture()));
     }
 }
