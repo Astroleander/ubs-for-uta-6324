@@ -58,21 +58,26 @@ public class ReleaseNewBilling extends AppCompatActivity {
                 String name = user.getUsername();
                 String userId = user.getId();
                 String address = getStringFromEditText(text_address);
-                billing = new Billing(
-                        Id,
-                        name,
-                        address,
-                        userId
-                );
-                Log.d("initSubmit", billing.toString());
-                dbHelper.insert(billing);
-                Toast.makeText(ReleaseNewBilling.this, "Released successfully.", Toast.LENGTH_LONG).show();
+                if (Id.length() == 0){
+                    Toast.makeText(ReleaseNewBilling.this, " CardId cannot be empty .", Toast.LENGTH_LONG).show();
+                }else{
+                    billing = new Billing(
+                            Id,
+                            name,
+                            address,
+                            userId
+                    );
+                    Log.d("initSubmit", billing.toString());
+                    dbHelper.insert(billing);
+                    Toast.makeText(ReleaseNewBilling.this, "Released successfully.", Toast.LENGTH_LONG).show();
 
 
-                Intent intent = getIntent();
-                intent = intent.setClass(ReleaseNewBilling.this, ProfileMyBillings.class);
-                startActivity(intent);
-                finish();
+                    Intent intent = getIntent();
+                    intent = intent.setClass(ReleaseNewBilling.this, ProfileMyBillings.class);
+                    startActivity(intent);
+                    finish();
+                }
+
             }
         });
     }

@@ -21,7 +21,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.ReleaseNewBilling.ReleaseNewBilling"></activity>
+        <activity android:name=".ui.main.market.buy_borrow"></activity>
+        <activity android:name=".ui.ReleaseNewBilling.ReleaseNewBilling" />
         <activity android:name=".ui.main.profile.ProfileMyBillings" />
         <activity android:name=".ui.main.market.Sell_Activity" />
         <activity android:name=".ui.main.market.MerchandiseDetail" />

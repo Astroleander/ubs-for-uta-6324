@@ -26,13 +26,15 @@ public class MerchandiseDetail extends AppCompatActivity {
     private Button bt_back;
     private Button bt_buyorborrow;
     private Merchandise merchandise;
+    private User user;
 
     private DBHelper dbHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_merchandise_detail);
-        merchandise = (Merchandise) this.getIntent().getSerializableExtra("merchanise");
+        merchandise = (Merchandise) this.getIntent().getSerializableExtra("Merchanise");
+        user = (User) this.getIntent().getSerializableExtra("User");
         this.initView();
         this.submitBack();
         this.submitBuyorBorrow();
@@ -43,8 +45,9 @@ public class MerchandiseDetail extends AppCompatActivity {
             public void onClick(View view) {
                 DBHelper dbHelper = new DBHelper(view.getContext());
                 //  todo: NavigationActivity.class need change to Buy_BorrowActivity.class
-                Intent intent = getIntent().setClass(MerchandiseDetail.this, NavigationActivity.class);
+                Intent intent = getIntent().setClass(MerchandiseDetail.this, buy_borrow.class);
                 intent.putExtra("Merchandise", merchandise);
+                intent.putExtra("User", merchandise);
                 startActivity(intent);
                 finish();
             }
