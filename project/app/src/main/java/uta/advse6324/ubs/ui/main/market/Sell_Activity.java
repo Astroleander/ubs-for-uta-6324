@@ -44,6 +44,7 @@ public class Sell_Activity extends AppCompatActivity {
 
 
     private Button bt_sell_lend;
+    private Button cancel;
 
     private MerDBHelper dbHelper;
     private Merchandise merForm;
@@ -91,6 +92,14 @@ public class Sell_Activity extends AppCompatActivity {
 //                    isChanged = !isChanged;
 
                 }
+            }
+        });
+
+        cancel = findViewById(R.id.button3);
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
         cb = (CheckBox)findViewById(R.id.check_lend);

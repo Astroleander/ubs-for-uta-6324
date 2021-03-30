@@ -14,6 +14,7 @@ import uta.advse6324.ubs.pojo.Merchandise;
 import androidx.annotation.Nullable;
 
 import uta.advse6324.ubs.pojo.Post;
+import uta.advse6324.ubs.pojo.User;
 import uta.advse6324.ubs.utils.DBHelper;
 import uta.advse6324.ubs.utils.EnumTable;
 
@@ -109,6 +110,28 @@ public class MerDBHelper extends DBHelper {
         cursor.close();
         Merchandise[] r = {};
         return result.toArray(r);
+    }
+
+    public String changeA(Merchandise mer){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues cv = new ContentValues();
+        cv.put(EnumTable.Merchandise.ID, mer.getId());
+        cv.put(EnumTable.Merchandise.NAME,mer.getName());
+        cv.put(EnumTable.Merchandise.DESCRIPTION,mer.getDescription());
+        cv.put(EnumTable.Merchandise.PICTURE,mer.getPicture());
+        cv.put(EnumTable.Merchandise.PRICE,mer.getPrice());
+        cv.put(EnumTable.Merchandise.AVAILABLE,mer.getAvailable_status());
+        cv.put(EnumTable.Merchandise.SELL_LEND,mer.getSell_lend());
+        cv.put(EnumTable.Merchandise.OWNER_ID ,mer.getOwner_id());
+        cv.put(EnumTable.Merchandise.DATE,mer.getTimestamp());
+
+        long res = db.update(EnumTable.TABLE_LIST.MERCHANDISE, cv, "ID=?", new String[]{mer.getId()});
+        if(res == -1)
+            return "failed";
+        else
+            return "Change Successfully";
+
     }
 
     public Merchandise[] queryMerchandiseByUserID(String uid) {
