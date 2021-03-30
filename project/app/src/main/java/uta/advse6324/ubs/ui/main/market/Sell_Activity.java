@@ -49,7 +49,7 @@ public class Sell_Activity extends AppCompatActivity {
     private Merchandise merForm;
 
     private CheckBox cb;
-    Boolean lend;
+    Boolean lend=Boolean.FALSE;
 
     private static final int IMAGE = 1;
     ImageView iv;
