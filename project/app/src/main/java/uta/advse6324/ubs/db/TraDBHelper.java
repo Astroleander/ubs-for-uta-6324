@@ -1,5 +1,6 @@
 package uta.advse6324.ubs.db;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -22,8 +23,8 @@ public class TraDBHelper extends DBHelper {
 
     private static final String TRA_CREATE =
             "create table if not exists "+ EnumTable.TABLE_LIST.TRANSCATION + " (" +
-                    EnumTable.Transcation.USERID + " varchar(10) not null," +
-                    EnumTable.Transcation.MERID + " varchar(10) not null," +
+                    EnumTable.Transcation.USERID + " varchar(50) not null," +
+                    EnumTable.Transcation.MERID + " varchar(50) not null," +
                     EnumTable.Transcation.DATE + " timestamp default CURRENT_TIMESTAMP not null," +
                     EnumTable.Transcation.BUY_BORROW + " boolean not null," +
                     EnumTable.Transcation.PAY_STATUS + " boolean not null" +
@@ -33,6 +34,18 @@ public class TraDBHelper extends DBHelper {
     public void onCreate(SQLiteDatabase db) {
 //        Log.d("DBHelper", "create User TABLE");
         db.execSQL(TRA_CREATE);
+    }
+
+    public void insert(transaction tra) {
+        SQLiteDatabase db = this.getWritableDatabase();
+//        onCreate(db);
+        ContentValues cv = new ContentValues();
+        cv.put(EnumTable.Transcation.USERID,tra.getUserid());
+        cv.put(EnumTable.Transcation.MERID,tra.getMerid());
+        cv.put(EnumTable.Transcation.BUY_BORROW,tra.getBuy_borrow());
+        cv.put(EnumTable.Transcation.PAY_STATUS,tra.getPay_status());
+
+        long res = db.insert(EnumTable.TABLE_LIST.TRANSCATION, null, cv);
     }
 
     @Override

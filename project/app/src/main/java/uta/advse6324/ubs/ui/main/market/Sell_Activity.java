@@ -172,12 +172,18 @@ public class Sell_Activity extends AppCompatActivity {
                         lend,
                         owner_id);
 //                    System.out.println(userForm);
+                if(name.length()==0 || price.length()==0||description.length()==0){
+                    Toast.makeText(Sell_Activity.this, "Please fill in all the information.", Toast.LENGTH_LONG).show();
 
-                Log.d("initSubmit", merForm.toString());
-                dbHelper.insert(merForm);
+                }else{
+                    Log.d("initSubmit", merForm.toString());
+                    dbHelper.insert(merForm);
 
-                Toast.makeText(Sell_Activity.this, "Add successfully.", Toast.LENGTH_LONG).show();
-                finish();
+                    Toast.makeText(Sell_Activity.this, "Add successfully.", Toast.LENGTH_LONG).show();
+                    finish();
+                }
+
+
 
 
 

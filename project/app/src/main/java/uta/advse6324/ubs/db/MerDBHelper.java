@@ -38,7 +38,7 @@ public class MerDBHelper extends DBHelper {
 
     private static final String MER_CREATE =
             "create table if not exists "+ EnumTable.TABLE_LIST.MERCHANDISE + " (" +
-                    EnumTable.Merchandise.ID   + "var primary key, " +
+                    EnumTable.Merchandise.ID   + " timestamp default CURRENT_TIMESTAMP primary key, " +
                     EnumTable.Merchandise.NAME + " varchar(30) not null," +
                     EnumTable.Merchandise.DESCRIPTION +" varchar(30) not null, "+
                     EnumTable.Merchandise.PICTURE + " blob not null, " +
