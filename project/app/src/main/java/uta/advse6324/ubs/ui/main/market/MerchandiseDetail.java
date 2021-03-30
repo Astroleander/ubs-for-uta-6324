@@ -61,11 +61,6 @@ public class MerchandiseDetail extends AppCompatActivity {
         bt_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DBHelper dbHelper = new DBHelper(view.getContext());
-                Intent intent = getIntent().setClass(MerchandiseDetail.this, NavigationActivity.class);
-                intent.putExtra(LOGIN_USER_INFO, dbHelper.queryUser(merchandise.getId()));
-                intent.putExtra("Merchandise_DETAIL",3);
-                startActivity(intent);
                 finish();
             }
         });

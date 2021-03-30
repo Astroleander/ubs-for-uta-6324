@@ -16,7 +16,7 @@ import uta.advse6324.ubs.pojo.User;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-    public static final String DB_NAME = "test10";
+    public static final String DB_NAME = "test11";
     public static final int DB_VERSION = 1;
 
     private static final String USER_CREATE =
