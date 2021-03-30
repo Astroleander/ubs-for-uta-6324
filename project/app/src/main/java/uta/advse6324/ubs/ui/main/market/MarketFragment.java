@@ -28,6 +28,7 @@ import uta.advse6324.ubs.R;
 import uta.advse6324.ubs.pojo.Merchandise;
 import uta.advse6324.ubs.pojo.User;
 import uta.advse6324.ubs.ui.main.profile.ProfileMyPostsActivity;
+import uta.advse6324.ubs.ui.main.profile.ProfileSellOrLendActivity;
 
 import static uta.advse6324.ubs.ui.login.LoginActivity.LOGIN_USER_INFO;
 
@@ -121,7 +122,7 @@ public class MarketFragment extends Fragment {
                 try {
                     Intent intent;
                     // TODO: replace activity
-                    intent = new Intent(getActivity(), ProfileMyPostsActivity.class);
+                    intent = new Intent(getActivity(), ProfileSellOrLendActivity.class);
                     intent.putExtra(LOGIN_USER_INFO, user);
                     startActivity(intent);
                 } catch (Exception e){

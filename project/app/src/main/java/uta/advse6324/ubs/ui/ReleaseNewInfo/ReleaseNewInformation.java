@@ -73,9 +73,6 @@ public class ReleaseNewInformation extends AppCompatActivity {
                     Toast.makeText(ReleaseNewInformation.this, "Released successfully.", Toast.LENGTH_LONG).show();
 
 
-                    Intent intent = getIntent();
-                    intent = intent.setClass(ReleaseNewInformation.this, NavigationActivity.class);
-                    startActivity(intent);
                     finish();
                 }
             }

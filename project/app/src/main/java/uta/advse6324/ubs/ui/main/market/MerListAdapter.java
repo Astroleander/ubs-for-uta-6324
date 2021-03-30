@@ -84,18 +84,19 @@ public class MerListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         Merchandise m = merchandiseList.get(position);
         vh.name.setText(m.getName());
         vh.description.setText(m.getDescription());
-        if (m.getPrice() != null && m.getPrice().length() > 0) {
+        if (m.getPrice() != null && (m.getPrice().length() > 0 || !m.getPrice().equals("0"))) {
             vh.price.setText("$"+m.getPrice());
         } else {
             vh.price.setText("for Free");
         }
         byte[] picArr = m.getPicture();
+        Log.d(TAG, "onBindViewHolder: " + m.getSell_lend());
         if (m.getSell_lend()) {
             vh.tag.setText("Sell");
             vh.tag.setBackgroundColor(context.getResources().getColor(R.color.colorSell));
         } else {
             vh.tag.setText("Lend");
-            vh.tag.setBackgroundColor(context.getResources().getColor(R.color.colorSell));
+            vh.tag.setBackgroundColor(context.getResources().getColor(R.color.colorLend));
         }
         vh.image.setImageBitmap(BitmapFactory.decodeByteArray(picArr, 0, picArr.length));
         vh.date.setText(m.getTimestamp());
@@ -104,11 +105,11 @@ public class MerListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         vh.view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Toast.makeText(view.getContext(), "Click item at " + position, Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(view.getContext(), MerchandiseDetail.class);
                 intent.putExtra("Merchandise", merchandiseList.get(position));
                 intent.putExtra("User", user);
                 view.getContext().startActivity(intent);
-                Toast.makeText(view.getContext(), "Click item" + position, Toast.LENGTH_SHORT).show();
             }
         });
         switch (holder.getItemViewType()) {

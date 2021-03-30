@@ -18,6 +18,8 @@ import uta.advse6324.ubs.pojo.User;
 import uta.advse6324.ubs.utils.DBHelper;
 import uta.advse6324.ubs.utils.EnumTable;
 
+import static android.content.ContentValues.TAG;
+
 public class MerDBHelper extends DBHelper {
 
     public MerDBHelper(@Nullable Context context) {
@@ -53,7 +55,7 @@ public class MerDBHelper extends DBHelper {
 
     public void insert(Merchandise mer){
         SQLiteDatabase db = this.getWritableDatabase();
-
+        Log.d(TAG, "insert: " + mer.getSell_lend());
         ContentValues cv = new ContentValues();
 //        cv.put(EnumTable.Merchandise.ID,mer.getId());
         cv.put(EnumTable.Merchandise.NAME,mer.getName());
@@ -78,7 +80,7 @@ public class MerDBHelper extends DBHelper {
         Cursor cursor = db.query(
                 EnumTable.TABLE_LIST.MERCHANDISE,
                 null,
-                null,
+                EnumTable.Merchandise.AVAILABLE + "=\"1\"" ,
                 null,
                 null,
                 null,
@@ -92,6 +94,7 @@ public class MerDBHelper extends DBHelper {
             String price = cursor.getString(cursor.getColumnIndex(EnumTable.Merchandise.PRICE));
             String availabe_status = cursor.getString(cursor.getColumnIndex(EnumTable.Merchandise.AVAILABLE));
             String sell_lend = cursor.getString(cursor.getColumnIndex(EnumTable.Merchandise.SELL_LEND));
+            Log.d(TAG, "queryAllMerchandise: "+ sell_lend + (Integer.parseInt(sell_lend) == 1));
             String post_date = cursor.getString(cursor.getColumnIndex(EnumTable.Merchandise.DATE));
             String owner_id = cursor.getString(cursor.getColumnIndex(EnumTable.Merchandise.OWNER_ID));
             Merchandise merchandise = new Merchandise(
@@ -100,8 +103,8 @@ public class MerDBHelper extends DBHelper {
                     description,
                     picture,
                     price,
-                    Boolean.valueOf(availabe_status),
-                    Boolean.valueOf(sell_lend),
+                    Integer.parseInt(availabe_status) == 0,
+                    Integer.parseInt(sell_lend) == 0,
                     post_date,
                     owner_id
             );
@@ -162,8 +165,8 @@ public class MerDBHelper extends DBHelper {
                     description,
                     picture,
                     price,
-                    Boolean.valueOf(availabe_status),
-                    Boolean.valueOf(sell_lend),
+                    Integer.parseInt(availabe_status) == 0,
+                    Integer.parseInt(sell_lend) == 0,
                     post_date,
                     owner_id
             );

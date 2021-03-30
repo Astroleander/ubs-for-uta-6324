@@ -44,11 +44,6 @@ public class InformationDetailActivity extends AppCompatActivity {
         bt_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DBHelper dbHelper = new DBHelper(view.getContext());
-                Intent intent = getIntent().setClass(InformationDetailActivity.this, NavigationActivity.class);
-                intent.putExtra(LOGIN_USER_INFO, dbHelper.queryUserByUsername(post.getOwner()));
-                intent.putExtra("INFORMATION_DETAIL",1);
-                startActivity(intent);
                 finish();
             }
         });
