@@ -1,6 +1,7 @@
 package uta.advse6324.ubs.ui.main.profile;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -46,13 +47,14 @@ public class ProfileBuyOrBorrowActivity extends AppCompatActivity {
         MerDBHelper merdbhelper = new MerDBHelper(this);
         merdbhelper.onCreate(merdbhelper.getReadableDatabase());
 
-        Merchandise[] list = merdbhelper.queryAllMerchandise();
+        Merchandise[] list = merdbhelper.queryAllMerchandiseContainsUNAVAILABLE();
         ArrayList<Merchandise> arr = new ArrayList<>();
         for (Merchandise merchandise : list) {
             if (mer_ids.contains(merchandise.getId())) {
                 arr.add(merchandise);
             }
         }
+
         listview.setAdapter(new MyBuyOrBorrowListAdapter(arr, this, user));
         listview.setLayoutManager(new LinearLayoutManager(this));
     }

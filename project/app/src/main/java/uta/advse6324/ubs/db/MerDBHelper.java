@@ -115,6 +115,47 @@ public class MerDBHelper extends DBHelper {
         return result.toArray(r);
     }
 
+    public Merchandise[] queryAllMerchandiseContainsUNAVAILABLE() {
+        ArrayList<Merchandise> result = new ArrayList<>();
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.query(
+                EnumTable.TABLE_LIST.MERCHANDISE,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null);
+        while (cursor.moveToNext()) {
+            String id = cursor.getString(cursor.getColumnIndex(EnumTable.Merchandise.ID));
+            String name = cursor.getString(cursor.getColumnIndex(EnumTable.Merchandise.NAME));
+            String description = cursor.getString(cursor.getColumnIndex(EnumTable.Merchandise.DESCRIPTION));
+
+            byte[] picture = cursor.getBlob(cursor.getColumnIndex(EnumTable.Merchandise.PICTURE));
+            String price = cursor.getString(cursor.getColumnIndex(EnumTable.Merchandise.PRICE));
+            String availabe_status = cursor.getString(cursor.getColumnIndex(EnumTable.Merchandise.AVAILABLE));
+            String sell_lend = cursor.getString(cursor.getColumnIndex(EnumTable.Merchandise.SELL_LEND));
+            Log.d(TAG, "queryAllMerchandise: "+ sell_lend + (Integer.parseInt(sell_lend) == 1));
+            String post_date = cursor.getString(cursor.getColumnIndex(EnumTable.Merchandise.DATE));
+            String owner_id = cursor.getString(cursor.getColumnIndex(EnumTable.Merchandise.OWNER_ID));
+            Merchandise merchandise = new Merchandise(
+                    id,
+                    name,
+                    description,
+                    picture,
+                    price,
+                    Integer.parseInt(availabe_status) == 0,
+                    Integer.parseInt(sell_lend) == 0,
+                    post_date,
+                    owner_id
+            );
+            result.add(merchandise);
+        }
+        cursor.close();
+        Merchandise[] r = {};
+        return result.toArray(r);
+    }
+
     public String changeA(Merchandise mer){
         SQLiteDatabase db = this.getWritableDatabase();
 
