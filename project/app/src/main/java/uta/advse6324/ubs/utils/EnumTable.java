@@ -12,6 +12,8 @@ public class EnumTable {
         public static String MERCHANDISE = "tbl_mer";
         public static String TRANSCATION = "tbl_tra";
         public static String Billing = "tbl_Bil";
+        public static String CLUB = "tbl_club";
+        public static String CLUBMEMBER = "tbl_clubmember";
     }
 
     public static final class User {
@@ -70,5 +72,17 @@ public class EnumTable {
         public static String BUY_BORROW = "buy_borrow";
         public static String PAY_STATUS = "pay_status";
 
+    }
+
+    public static final class Club{
+        public static String CLUBNAME = "clubname";
+        public static String CLUBINTRODUCTION = "clubintroduction";
+        public static String CLUBCATEGORY = "clubcategory";
+        public static String CLUBMANAGERID = "clubmanagerid";
+    }
+
+    public static final class ClubMember{
+        public static String CLUBNAME = "clubname";
+        public static String USERNAME = "username";
     }
 }
