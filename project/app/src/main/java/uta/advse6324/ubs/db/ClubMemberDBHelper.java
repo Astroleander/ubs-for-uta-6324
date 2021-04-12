@@ -18,8 +18,8 @@ public class ClubMemberDBHelper extends DBHelper {
 
     private static final String CREATE =
             "create table if not exists "+ EnumTable.TABLE_LIST.CLUBMEMBER + "(" +
-                    EnumTable.ClubMember.CLUBNAME + " varchar(10) not null unique," +
-                    EnumTable.ClubMember.USERNAME + " varchar(30) not null unique," +
+                    EnumTable.ClubMember.CLUBNAME + " varchar(10) not null," +
+                    EnumTable.ClubMember.USERNAME + " varchar(30) not null," +
                     "foreign key" + "(" + EnumTable.ClubMember.CLUBNAME + ")" + " references " + EnumTable.TABLE_LIST.CLUB + "(" + EnumTable.Club.CLUBNAME + ")," +
                     "foreign key" + "(" + EnumTable.ClubMember.USERNAME + ")" + " references " + EnumTable.TABLE_LIST.USER + "(" + EnumTable.User.USERNAME + ")," +
                     "primary key" + "(" + EnumTable.ClubMember.CLUBNAME + "," + EnumTable.ClubMember.USERNAME + ")" +
