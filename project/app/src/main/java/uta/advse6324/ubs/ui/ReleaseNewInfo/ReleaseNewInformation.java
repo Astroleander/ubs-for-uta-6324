@@ -86,6 +86,7 @@ public class ReleaseNewInformation extends AppCompatActivity {
         text_contact = findViewById(R.id.text_contact);
         text_content = findViewById(R.id.text_content);
 
+
     }
     static String getStringFromEditText(EditText editText) {
         return editText.getText().toString();

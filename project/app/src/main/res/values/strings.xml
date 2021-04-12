@@ -53,4 +53,8 @@
     <string name="btn_my_merchandise">my merchandise</string>
     <string name="title_btn_profile_my_buy_or_borrow">My Buy And Borrows</string>
     <string name="title_btn_profile_my_sell_or_lend">My Sells and Lends</string>
+    <string name="release_new_club">Release new club</string>
+    <string name="hint_clubName">Club Name</string>
+    <string name="hint_description">Club Description</string>
+    <string name="btn_cancel">Cancel</string>
 </resources>

@@ -28,6 +28,7 @@ import uta.advse6324.ubs.R;
 import uta.advse6324.ubs.pojo.Club;
 import uta.advse6324.ubs.pojo.Post;
 import uta.advse6324.ubs.pojo.User;
+import uta.advse6324.ubs.ui.ReleaseNewClub.ReleaseNewClub;
 import uta.advse6324.ubs.ui.ReleaseNewInfo.ReleaseNewInformation;
 import uta.advse6324.ubs.ui.main.home.HomeListAdapter;
 import uta.advse6324.ubs.ui.main.profile.ProfileClubActivity;
@@ -62,7 +63,11 @@ public class ClubFragment extends Fragment {
             public void onClick(View view) {
                 try {
                     User user = (User) getActivity().getIntent().getSerializableExtra(LOGIN_USER_INFO);
-                    //TODO CreateClub
+                    //TODO
+                    Intent intent;
+                    intent = new Intent(getActivity(), ReleaseNewClub.class);
+                    intent.putExtra(LOGIN_USER_INFO, user);
+                    startActivity(intent);
                 } catch (Exception e){
                     Log.e("EROERROR", "onClick: ", e);
                     Toast.makeText(root.getContext(), "Load user info failed, try login again", Toast.LENGTH_LONG).show();

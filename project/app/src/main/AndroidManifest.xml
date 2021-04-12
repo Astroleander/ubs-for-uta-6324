@@ -21,7 +21,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.main.market.buy_borrow"></activity>
+        <activity android:name=".ui.ReleaseNewClub.ReleaseNewClub"></activity>
+        <activity android:name=".ui.main.market.buy_borrow" />
         <activity android:name=".ui.ReleaseNewBilling.ReleaseNewBilling" />
         <activity android:name=".ui.main.profile.ProfileMyBillings" />
         <activity android:name=".ui.main.market.Sell_Activity" />
@@ -29,7 +30,7 @@
         <activity android:name=".ui.main.profile.ProfileMyPostsActivity" />
         <activity android:name=".ui.main.profile.ProfileSellOrLendActivity" />
         <activity android:name=".ui.main.profile.ProfileBuyOrBorrowActivity" />
-        <activity android:name=".ui.main.profile.ProfileClubActivity"/>
+        <activity android:name=".ui.main.profile.ProfileClubActivity" />
         <activity android:name=".ui.login.ChangepwActivity" />
         <activity android:name=".ui.login.ForgetpwActivity" />
         <activity
