@@ -13,8 +13,10 @@ import android.widget.Toast;
 import uta.advse6324.ubs.R;
 import uta.advse6324.ubs.db.BillingDBHelper;
 import uta.advse6324.ubs.db.ClubDBHelper;
+import uta.advse6324.ubs.db.ClubMemberDBHelper;
 import uta.advse6324.ubs.pojo.Billing;
 import uta.advse6324.ubs.pojo.Club;
+import uta.advse6324.ubs.pojo.ClubMember;
 import uta.advse6324.ubs.pojo.User;
 import uta.advse6324.ubs.ui.ReleaseNewBilling.ReleaseNewBilling;
 import uta.advse6324.ubs.ui.main.profile.ProfileMyBillings;
@@ -24,6 +26,7 @@ import static uta.advse6324.ubs.ui.login.LoginActivity.LOGIN_USER_INFO;
 public class ReleaseNewClub extends AppCompatActivity {
     private Button release_button;
     private ClubDBHelper dbHelper;
+    private ClubMemberDBHelper CMdbHelper;
     private User user;
     private Club club;
     private EditText text_name;
@@ -44,6 +47,8 @@ public class ReleaseNewClub extends AppCompatActivity {
     private void initView() {
         this.dbHelper = new ClubDBHelper(this);
         this.dbHelper.getReadableDatabase();
+        this.CMdbHelper = new ClubMemberDBHelper(this);
+        this.CMdbHelper.getReadableDatabase();
         release_button = findViewById(R.id.realse_club_button);
         text_name = findViewById(R.id.club_name);
 //        text_name = findViewById(R.id.text_name);
@@ -60,6 +65,8 @@ public class ReleaseNewClub extends AppCompatActivity {
                 String name = user.getUsername();
                 String userId = user.getId();
                 String description = getStringFromEditText(text_description);
+                ClubMember clubMember;
+                clubMember = new ClubMember(club_name, name);
                 if (description.length() == 0 || club_name.length() == 0){
                     Toast.makeText(ReleaseNewClub.this, "Please fill in all the information.", Toast.LENGTH_LONG).show();
                 }else if (club_name.length() < 6) {
@@ -73,6 +80,8 @@ public class ReleaseNewClub extends AppCompatActivity {
                         );
                         Log.d("initSubmit", club.toString());
                         dbHelper.insert(club);
+                        CMdbHelper.insert(clubMember);
+
                         Toast.makeText(ReleaseNewClub.this, "Released successfully.", Toast.LENGTH_LONG).show();
                         finish();
                 }
