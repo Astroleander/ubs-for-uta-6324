@@ -50,7 +50,7 @@
                     android:layout_width="0dp"
                     android:layout_weight="8"
                     android:layout_height="wrap_content"
-                    android:text="@string/btn_delete"
+                    android:text="@string/btn_detail"
                     />
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
