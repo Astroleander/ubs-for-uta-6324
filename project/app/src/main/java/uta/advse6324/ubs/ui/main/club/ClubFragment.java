@@ -57,6 +57,19 @@ public class ClubFragment extends Fragment {
         return root;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.d("ClubFragment", "[onResume]");
+        clubViewModel.getList().observe(getViewLifecycleOwner(), new Observer<ArrayList<Club>>() {
+            @Override
+            public void onChanged(ArrayList<Club> clubs) {
+                list.setAdapter(new ClubListAdapter(clubs));
+                list.setLayoutManager(new LinearLayoutManager(root.getContext()));
+            }
+        });
+    }
+
     private void initFAB() {
         fabCreate.setOnClickListener(new View.OnClickListener() {
             @Override
