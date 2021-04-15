@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -11,6 +12,7 @@ import java.util.ArrayList;
 
 
 import uta.advse6324.ubs.pojo.ClubMember;
+import uta.advse6324.ubs.pojo.Post;
 import uta.advse6324.ubs.utils.DBHelper;
 import uta.advse6324.ubs.utils.EnumTable;
 
@@ -54,6 +56,30 @@ public class ClubMemberDBHelper extends DBHelper {
 
         long res = db.insert(EnumTable.TABLE_LIST.CLUBMEMBER, null, cv);
     }
+    public boolean delete(ClubMember member){
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.delete(EnumTable.TABLE_LIST.CLUBMEMBER, "clubname=? AND username=?", new String[]{member.getClubname(),member.getUsername()}) > 0;
+    }
+
+
+    public boolean query(ClubMember member){
+        SQLiteDatabase db = this.getWritableDatabase();
+        //Cursor cursor = db.query("tbl_clubmember",null, "clubname=? AND username=?",new String[]{member.getClubname(),member.getUsername()},null,null,null);
+        // Cursor cursor = db.query("select username from tbl_clubmember where clubname=? and username=?", new String[]{member.getClubname(),member.getUsername()});
+        Cursor cursor = db.rawQuery("select * from tbl_clubmember",null);
+        //
+        String clubname = cursor.getString(cursor.getColumnIndex(EnumTable.ClubMember.CLUBNAME));
+       //String user = cursor.getString(cursor.getColumnIndex(EnumTable.ClubMember.USERNAME));
+        // ClubMember member_temp = new ClubMember(club, user);
+        if(clubname!=null){
+            return true;
+        }
+        else {
+            return false;
+        }
+
+    }
+
 
     public ClubMember[] queryAllMember(){
         ArrayList<ClubMember> result = new ArrayList<>();

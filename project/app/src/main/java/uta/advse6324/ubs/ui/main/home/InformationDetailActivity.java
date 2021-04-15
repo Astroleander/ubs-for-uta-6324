@@ -1,6 +1,5 @@
 package uta.advse6324.ubs.ui.main.home;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,13 +10,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import uta.advse6324.ubs.R;
 import uta.advse6324.ubs.pojo.Post;
-import uta.advse6324.ubs.ui.main.NavigationActivity;
-import uta.advse6324.ubs.ui.main.profile.PostDetailActivity;
-import uta.advse6324.ubs.ui.main.profile.ProfileMyPostsActivity;
-import uta.advse6324.ubs.utils.DBHelper;
-
-import static uta.advse6324.ubs.ui.login.LoginActivity.LOGIN_USER_INFO;
-import static uta.advse6324.ubs.ui.main.profile.MyPostsListAdapter.DETAIL;
 
 public class InformationDetailActivity extends AppCompatActivity {
     private TextView tv_id;

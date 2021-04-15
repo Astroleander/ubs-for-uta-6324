@@ -46,11 +46,12 @@ public class ClubFragment extends Fragment {
     private FloatingActionButton fabCreate;
 
     private View root;
-
+    private User user;//llw
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         clubViewModel = new ViewModelProvider(this).get(ClubViewModel.class);
         root = inflater.inflate(R.layout.fragment_club, container, false);
+        user = (User) getActivity().getIntent().getSerializableExtra(LOGIN_USER_INFO);//llw
         initFABMenu();
         initFAB();
         initView();
@@ -64,7 +65,7 @@ public class ClubFragment extends Fragment {
         clubViewModel.getList().observe(getViewLifecycleOwner(), new Observer<ArrayList<Club>>() {
             @Override
             public void onChanged(ArrayList<Club> clubs) {
-                list.setAdapter(new ClubListAdapter(clubs));
+                list.setAdapter(new ClubListAdapter(clubs,user));//llw
                 list.setLayoutManager(new LinearLayoutManager(root.getContext()));
             }
         });
@@ -151,7 +152,7 @@ public class ClubFragment extends Fragment {
         clubViewModel.getList().observe(getViewLifecycleOwner(), new Observer<ArrayList<Club>>() {
             @Override
             public void onChanged(ArrayList<Club> clubs) {
-                list.setAdapter(new ClubListAdapter(clubs));
+                list.setAdapter(new ClubListAdapter(clubs,user));//llw
                 list.setLayoutManager(new LinearLayoutManager(root.getContext()));
             }
         });

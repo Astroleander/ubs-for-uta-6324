@@ -26,6 +26,7 @@
     <string name="title_btn_profile_my_posts">My Posts</string>
     <string name="title_btn_profile_my_club">My Clubs</string>
     <string name="title_release_new_information">Release New Information</string>
+    <string name="title_club_detail">Club Detail</string>
     <string name="btn_create_post">create one</string>
     <string name="btn_sell">sell or lend</string>
     <string name="btn_my_posts">my post</string>
@@ -57,4 +58,15 @@
     <string name="hint_clubName">Club Name</string>
     <string name="hint_description">Club Description</string>
     <string name="btn_cancel">Cancel</string>
+    <string name="title">Title</string>
+    <string name="owner">Owner</string>
+    <string name="contact">Contact</string>
+    <string name="post_time">Post Time</string>
+    <string name="content">Content</string>
+    <string name="manager">Manager</string>
+    <string name="category">Category</string>
+    <string name="club_name">Club Name</string>
+    <string name="introduction">Introduction</string>
+    <string name="join_club">Join Club</string>
+    <string name="quit_club">Quit Club</string>
 </resources>

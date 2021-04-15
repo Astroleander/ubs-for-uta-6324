@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,6 +14,9 @@ import java.util.ArrayList;
 
 import uta.advse6324.ubs.R;
 import uta.advse6324.ubs.pojo.Club;
+import uta.advse6324.ubs.pojo.User;
+
+import static uta.advse6324.ubs.ui.login.LoginActivity.LOGIN_USER_INFO;
 
 public class ClubListAdapter  extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
@@ -34,9 +38,11 @@ public class ClubListAdapter  extends RecyclerView.Adapter<RecyclerView.ViewHold
 
 
     private final ArrayList<Club> clubList;
+    private final User user;
 
-    public ClubListAdapter(ArrayList<Club> club_list) {
+    public ClubListAdapter(ArrayList<Club> club_list ,User u) {
         clubList = club_list;
+        user = u;
     }
 
     @NonNull
@@ -54,11 +60,22 @@ public class ClubListAdapter  extends RecyclerView.Adapter<RecyclerView.ViewHold
         cvh.category.setText(club.getCategory());
         cvh.introduction.setText(club.getIntroduction());
         cvh.view.setOnClickListener(new View.OnClickListener() {
+
+
             @Override
             public void onClick(View view) {
-                //TODO ClubDetailActivity
+
+                Intent intent = new Intent(view.getContext(), ClubDetailActivity.class);
+                intent.putExtra("INFORMATION", clubList.get(position));
+                intent.putExtra(LOGIN_USER_INFO, user);
+                view.getContext().startActivity(intent);
+                Toast.makeText(view.getContext(), "Click item" + position, Toast.LENGTH_SHORT).show();
+                //view.invalidate();//llw
+
 
             }
+
+
         });
     }
 

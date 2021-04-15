@@ -37,6 +37,7 @@ public class ProfileClubActivity extends AppCompatActivity {
         clubMemberDBHelper = new ClubMemberDBHelper(this);
         clubDBHelper = new ClubDBHelper(this);
         clubMemberDBHelper.onCreate(clubMemberDBHelper.getReadableDatabase());;
+        //test
 //        clubMemberDBHelper.insert(new ClubMember("club0", "zyt"));
 //        clubMemberDBHelper.insert(new ClubMember("club1", "yxz"));
 //        clubMemberDBHelper.insert(new ClubMember("club2", "zyt"));
@@ -47,6 +48,14 @@ public class ProfileClubActivity extends AppCompatActivity {
 //        clubMemberDBHelper.insert(new ClubMember("club7", "yxz"));
 //        clubMemberDBHelper.insert(new ClubMember("club8", "yxz"));
 //        clubMemberDBHelper.insert(new ClubMember("club9", "zyt"));
+        //
+//        clubMemberDBHelper.insert(new ClubMember("club0", "xigua"));
+//        clubMemberDBHelper.insert(new ClubMember("club1", "xigua"));
+//        clubMemberDBHelper.insert(new ClubMember("club2", "xigua"));
+//        clubMemberDBHelper.insert(new ClubMember("club3", "xigua"));
+        //
+         //clubMemberDBHelper.delete(new ClubMember("club2", "xig"));
+        //
         User user = (User) getIntent().getSerializableExtra(LOGIN_USER_INFO);
 
 //        ClubMember[] members = clubMemberDBHelper.queryAllMember();
@@ -58,7 +67,8 @@ public class ProfileClubActivity extends AppCompatActivity {
             arr.add(club[0]);
         }
 
-        listview.setAdapter(new MyClubListAdapter(arr));
+        listview.setAdapter(new MyClubListAdapter(arr,user));//llw
         listview.setLayoutManager(new LinearLayoutManager(this));
+
     }
 }
