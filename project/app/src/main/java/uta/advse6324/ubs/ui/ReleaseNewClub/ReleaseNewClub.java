@@ -6,9 +6,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import uta.advse6324.ubs.R;
 import uta.advse6324.ubs.db.BillingDBHelper;
@@ -30,6 +37,11 @@ public class ReleaseNewClub extends AppCompatActivity {
     private User user;
     private Club club;
     private EditText text_name;
+    private TextView tv_select;
+    private Spinner spinner;
+    private List<String> list;
+    private ArrayAdapter<String>adapter;
+    private String category;
     //    private String text_name;
     //    private String text_userId;
     private EditText text_description;
@@ -51,6 +63,28 @@ public class ReleaseNewClub extends AppCompatActivity {
         this.CMdbHelper.getReadableDatabase();
         release_button = findViewById(R.id.realse_club_button);
         text_name = findViewById(R.id.club_name);
+        tv_select = findViewById(R.id.select_club_category);
+        spinner = (Spinner)findViewById(R.id.spinner_category);
+        list = new ArrayList<String>();
+        list.add("sport");
+        list.add("music");
+        list.add("academic");
+        list.add("movie");
+        list.add("professional");
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, list);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                category = list.get(position);
+//                Toast.makeText(ReleaseNewClub.this, category, Toast.LENGTH_LONG).show();
+
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
 //        text_name = findViewById(R.id.text_name);
 //        text_userId = findViewById(R.id.text_UserId);
         text_description = findViewById(R.id.club_description);
@@ -75,7 +109,7 @@ public class ReleaseNewClub extends AppCompatActivity {
                         club = new Club(
                                 club_name,
                                 name,
-                                "10", // TODO： 确认一下category是如何得到的
+                                category,
                                 description
                         );
                         Log.d("initSubmit", club.toString());
