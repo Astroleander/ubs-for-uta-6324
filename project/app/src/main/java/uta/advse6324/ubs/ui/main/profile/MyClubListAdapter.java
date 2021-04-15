@@ -52,7 +52,7 @@ public class MyClubListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     private ClubDBHelper clubDBHelper;
     public MyClubListAdapter(ArrayList<Club> club_list,User u) {
         clubList = club_list;
-        user= u;
+        user= u;//
     }
 
     @NonNull
