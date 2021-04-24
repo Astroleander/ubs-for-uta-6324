@@ -15,6 +15,10 @@
         android:id="@+id/navigation_market"
         android:icon="@drawable/ic_baseline_shopping_bag_24"
         android:title="@string/title_market" />
+    <item
+        android:id="@+id/navigation_message"
+        android:icon="@drawable/ic_baseline_shopping_bag_24"
+        android:title="@string/title_message" />
 
     <item
         android:id="@+id/navigation_profile"

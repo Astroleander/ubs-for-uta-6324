@@ -14,6 +14,7 @@ public class EnumTable {
         public static String Billing = "tbl_Bil";
         public static String CLUB = "tbl_club";
         public static String CLUBMEMBER = "tbl_clubmember";
+        public static String MESSAGE = "tbl_message";
     }
 
     public static final class User {
@@ -84,5 +85,12 @@ public class EnumTable {
     public static final class ClubMember{
         public static String CLUBNAME = "clubname";
         public static String USERNAME = "username";
+    }
+    public static final class Message{
+        public static String TIME = "time";
+        public static String SEND = "send";
+        public static String RECEIVE = "receive";
+        public static String CONTENT = "content";
+        public static String READSTATUS = "read_status";
     }
 }

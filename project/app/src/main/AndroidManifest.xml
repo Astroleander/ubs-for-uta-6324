@@ -21,7 +21,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.ReleaseNewClub.ReleaseNewClub"></activity>
+        <activity
+            android:name=".ui.main.message.MesDetail"
+            android:label="@string/title_activity_mes_detail"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".ui.ReleaseNewClub.ReleaseNewClub" />
         <activity android:name=".ui.main.market.buy_borrow" />
         <activity android:name=".ui.ReleaseNewBilling.ReleaseNewBilling" />
         <activity android:name=".ui.main.profile.ProfileMyBillings" />
@@ -67,7 +71,6 @@
         <activity
             android:name=".ui.main.profile.EditPostActivity"
             android:label="EditPost" />
-
         <activity android:name=".ui.ReleaseNewInfo.ReleaseNewInformation" />
     </application>
 

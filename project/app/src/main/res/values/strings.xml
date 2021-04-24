@@ -22,6 +22,7 @@
     <string name="title_home">Home</string>
     <string name="title_club">Club</string>
     <string name="title_market">Market</string>
+    <string name="title_message">Message</string>
     <string name="title_profile">Profile</string>
     <string name="title_btn_profile_my_posts">My Posts</string>
     <string name="title_btn_profile_my_club">My Clubs</string>
@@ -69,4 +70,13 @@
     <string name="introduction">Introduction</string>
     <string name="join_club">Join Club</string>
     <string name="quit_club">Quit Club</string>
+    <string name="title_activity_mes_detail">MesDetail</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 </resources>

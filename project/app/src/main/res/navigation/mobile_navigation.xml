@@ -22,6 +22,11 @@
         android:name="uta.advse6324.ubs.ui.main.market.MarketFragment"
         android:label="@string/title_market"
         tools:layout="@layout/fragment_market" />
+    <fragment
+        android:id="@+id/navigation_message"
+        android:name="uta.advse6324.ubs.ui.main.message.MessageFragment"
+        android:label="@string/title_message"
+        tools:layout="@layout/fragment_market" />
 
     <fragment
         android:id="@+id/navigation_profile"
