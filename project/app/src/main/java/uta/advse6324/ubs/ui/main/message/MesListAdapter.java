@@ -86,7 +86,14 @@ public class MesListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     private final User user;
 
     public MesListAdapter(ArrayList<Message> list,  User u) {
-        messageList = list;
+        String receive = u.getId();
+        ArrayList<Message> list2 = new ArrayList<>();
+        for(int i=0;i<list.size();i++){
+            if(list.get(i).getReceive().contains(receive)){
+                list2.add(list.get(i));
+            }
+        }
+        messageList = list2;
 //        context = ctx;
         user = u;
     }

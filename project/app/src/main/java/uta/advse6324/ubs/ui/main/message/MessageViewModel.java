@@ -29,7 +29,7 @@ public class MessageViewModel extends AndroidViewModel {
     }
 
     private ArrayList<Message> queryList() {
-        
+
         mMesList = new MutableLiveData<>();
         dbhelper = new MesDBHelper(getApplication().getApplicationContext());
         dbhelper.onCreate(dbhelper.getReadableDatabase());
