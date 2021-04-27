@@ -38,8 +38,11 @@ public class MesListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 //        ClubListAdapter.ClubViewHolder cvh = (ClubListAdapter.ClubViewHolder) holder;
         Message mes = messageList.get(position);
 //        Club club = clubList.get(position);
+        String[] contents = mes.getContent().split("\n");
+        String title = contents[0];
         mvh.time.setText(mes.getTime());
         mvh.send.setText(mes.getSend());
+        mvh.title.setText(title);
 
         mvh.view.setOnClickListener(new View.OnClickListener() {
 
@@ -70,6 +73,7 @@ public class MesListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     class MesViewHolder extends RecyclerView.ViewHolder {
         private final TextView time;
         private final TextView send;
+        private final TextView title;
 
         private final View view;
         public MesViewHolder(@NonNull View itemView) {
@@ -77,6 +81,7 @@ public class MesListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             view = itemView;
             time = itemView.findViewById(R.id.message_time);
             send = itemView.findViewById(R.id.message_send);
+            title = itemView.findViewById(R.id.message_title);
 
         }
     }
@@ -86,7 +91,7 @@ public class MesListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     private final User user;
 
     public MesListAdapter(ArrayList<Message> list,  User u) {
-        String receive = u.getId();
+        String receive = u.getUsername();
         ArrayList<Message> list2 = new ArrayList<>();
         for(int i=0;i<list.size();i++){
             if(list.get(i).getReceive().contains(receive)){

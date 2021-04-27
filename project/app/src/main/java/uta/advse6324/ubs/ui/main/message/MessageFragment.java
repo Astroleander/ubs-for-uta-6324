@@ -148,7 +148,7 @@ public class MessageFragment extends Fragment {
                     ArrayList<Message> all = messageViewModel.getList().getValue();
                     ArrayList<Message> result = new ArrayList<>();
                     for (Message p: all) {
-                        if (p.getSend().contains(user.getId())) {
+                        if (p.getSend().contains(user.getUsername())) {
                             result.add(p);
                         }
                     }
@@ -176,7 +176,7 @@ public class MessageFragment extends Fragment {
                     ArrayList<Message> all = messageViewModel.getList().getValue();
                     ArrayList<Message> result = new ArrayList<>();
                     for (Message p: all) {
-                        if (p.getReceive().contains(user.getId())) {
+                        if (p.getReceive().contains(user.getUsername())) {
                             result.add(p);
                         }
                     }
@@ -201,7 +201,7 @@ public class MessageFragment extends Fragment {
                 ArrayList<Message> all = messageViewModel.getList().getValue();
                 ArrayList<Message> result = new ArrayList<>();
                 for (Message p: all) {
-                    if (p.getSend().contains(s) || p.getReceive().contains(s) ) {
+                    if (p.getSend().contains(s) || p.getReceive().contains(s) ||p.getContent().contains(s)) {
                         result.add(p);
                     }
                 }

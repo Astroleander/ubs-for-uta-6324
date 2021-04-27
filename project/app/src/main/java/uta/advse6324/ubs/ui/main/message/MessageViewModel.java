@@ -33,6 +33,7 @@ public class MessageViewModel extends AndroidViewModel {
         mMesList = new MutableLiveData<>();
         dbhelper = new MesDBHelper(getApplication().getApplicationContext());
         dbhelper.onCreate(dbhelper.getReadableDatabase());
+//        dbhelper.insert(new Message("","ligouzi","longclothe","hello\nhelloosdfasfasfd",true));
 
 
         Message[] list = dbhelper.queryAllMessage();
