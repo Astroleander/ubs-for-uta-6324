@@ -37,6 +37,7 @@ public class MesDetail extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        message = (Message) this.getIntent().getSerializableExtra("INFORMATION");
         setContentView(R.layout.activity_mes_detail);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -89,11 +90,11 @@ public class MesDetail extends AppCompatActivity {
 
     }
     private void initView() {
-        tv_time = findViewById(R.id.club_detail_nametv);
-        tv_send = findViewById(R.id.club_detail_introtv);
-        tv_content = findViewById(R.id.club_detail_categorytv);
-        bt_back = findViewById(R.id.club_detail_back);
-        bt_delete = findViewById(R.id.club_detail_Join_Club);
+        tv_time = findViewById(R.id.text_time);
+        tv_send = findViewById(R.id.text_sned);
+        tv_content = findViewById(R.id.text_detail_content);
+        bt_back = findViewById(R.id.ms_bt_back);
+        bt_delete = findViewById(R.id.ms_bt_delete);
 
         tv_time.setText(message.getTime());
         tv_send.setText(message.getSend());
