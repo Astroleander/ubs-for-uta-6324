@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 
+import uta.advse6324.ubs.pojo.ClubMember;
 import uta.advse6324.ubs.pojo.Merchandise;
 import uta.advse6324.ubs.pojo.Message;
 import uta.advse6324.ubs.utils.DBHelper;
@@ -87,5 +88,9 @@ public class MesDBHelper extends DBHelper {
         cv.put(EnumTable.Message.CONTENT,mes.getContent());
         cv.put(EnumTable.Message.READSTATUS,mes.isRead_status());
         long res = db.insert(EnumTable.TABLE_LIST.MESSAGE, null, cv);
+    }
+    public boolean delete(Message mes){
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.delete(EnumTable.TABLE_LIST.CLUBMEMBER, "time=?", new String[]{mes.getTime()}) > 0;
     }
 }
