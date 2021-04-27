@@ -34,10 +34,10 @@ public class MessageViewModel extends AndroidViewModel {
         dbhelper = new MesDBHelper(getApplication().getApplicationContext());
         dbhelper.onCreate(dbhelper.getReadableDatabase());
 //        dbhelper.insert(new Message(" ","cyf1","1001889072","This is a introduction of club1",true));
-//        dbhelper.insert(new Message(" ","1001889076","1001889074","This is a introduction of club2",true));
-//        dbhelper.insert(new Message(" ","cyf3","1001889074","This is a introduction of club3",true));
-//        dbhelper.insert(new Message(" ","xigua","1001889074","This is a introduction of club4",true));
-//        dbhelper.insert(new Message(" ","cyf3","1001890470","This is a introduction of club4",true));
+//        dbhelper.insert(new Message(" ","1001889076","1001890470","This is a introduction of club2",false));
+//        dbhelper.insert(new Message(" ","cyf3","1001889070","This is a introduction of club3",true));
+//        dbhelper.insert(new Message(" ","1001890470","xigua","This is a introduction of club4",true));
+ //       dbhelper.insert(new Message(" ","cyf3","1001890470","This is a introduction of club4",true));
 
         Message[] list = dbhelper.queryAllMessage();
         dbhelper.close();

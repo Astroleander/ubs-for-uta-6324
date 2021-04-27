@@ -91,6 +91,6 @@ public class MesDBHelper extends DBHelper {
     }
     public boolean delete(Message mes){
         SQLiteDatabase db = this.getWritableDatabase();
-        return db.delete(EnumTable.TABLE_LIST.CLUBMEMBER, "time=?", new String[]{mes.getTime()}) > 0;
+        return db.delete(EnumTable.TABLE_LIST.MESSAGE, "RECEIVE=?", new String[]{mes.getReceive()}) > 0;
     }
 }
