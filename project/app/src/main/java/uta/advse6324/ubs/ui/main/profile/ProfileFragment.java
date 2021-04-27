@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import uta.advse6324.ubs.R;
 import uta.advse6324.ubs.pojo.User;
+import uta.advse6324.ubs.ui.main.message.MessageSendActivity;
 
 import static uta.advse6324.ubs.ui.login.LoginActivity.LOGIN_USER_INFO;
 
@@ -37,7 +38,26 @@ public class ProfileFragment extends Fragment {
         initMyBiLling();
         initMerchandiseButtons();
         initMyClubButton();
+        initSendMessageButton();
         return root;
+    }
+
+    private void initSendMessageButton() {
+        final Button sendMsg = root.findViewById(R.id.send_message);
+        sendMsg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    Intent intent;
+                    intent = new Intent(getActivity(), MessageSendActivity.class);
+                    intent.putExtra(LOGIN_USER_INFO, user);
+                    startActivity(intent);
+                } catch (Exception e) {
+                    Log.e("EROERROR", "onClick: ", e);
+                    Toast.makeText(root.getContext(), "Load user info failed, try login again", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
     }
 
     private void initMyClubButton() {

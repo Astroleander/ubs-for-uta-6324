@@ -25,6 +25,11 @@
             android:name=".ui.main.message.MesDetail"
             android:label="@string/title_activity_mes_detail"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".ui.main.message.MessageSendActivity"
+            android:label="@string/title_activity_message_send"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
         <activity android:name=".ui.ReleaseNewClub.ReleaseNewClub" />
         <activity android:name=".ui.main.market.buy_borrow" />
         <activity android:name=".ui.ReleaseNewBilling.ReleaseNewBilling" />
