@@ -13,4 +13,7 @@
     <color name="colorSell">#009688</color>
     <color name="colorLend">#8bc34a</color>
     <color name="transparent">#00000000</color>
+    <color name="blue">#6B238E</color>
+
+    <color name="red">#FF0000</color>
 </resources>
