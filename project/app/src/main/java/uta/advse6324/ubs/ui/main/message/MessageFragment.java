@@ -117,7 +117,19 @@ public class MessageFragment extends Fragment {
         messageViewModel.getList().observe(getViewLifecycleOwner(), new Observer<ArrayList<Message>>() {
             @Override
             public void onChanged(@Nullable ArrayList<Message> arr) {
-                String receive = user.getId();
+                String receive = user.getUsername();
+                ArrayList<Message> temp = new ArrayList<>();
+                for(int i =0;i<arr.size();i++){
+                    Log.d(arr.get(i).getReceive(),receive);
+                    if(arr.get(i).getSend().contains(receive)){
+//                        arr.remove(i);
+                        temp.add(arr.get(i));
+
+                    }else {
+//                        arr.remove(i);
+                    }
+
+                }
 //                for(int i =0;i<arr.size();i++){
 //                    Log.d(arr.get(i).getReceive(),receive);
 //                    if(arr.get(i).getReceive().contains(receive)){
@@ -129,7 +141,7 @@ public class MessageFragment extends Fragment {
 //
 //                }
 
-                list.setAdapter(new MesListAdapter(arr, user));
+                list.setAdapter(new MesListAdapter(temp, user));
                 list.setLayoutManager(new LinearLayoutManager(root.getContext()));
             }
         });
@@ -228,21 +240,23 @@ public class MessageFragment extends Fragment {
         messageViewModel.getList().observe(getViewLifecycleOwner(), new Observer<ArrayList<Message>>() {
             @Override
             public void onChanged(@Nullable ArrayList<Message> arr) {
-                String receive = user.getId();
-//                for(int i =0;i<arr.size();i++){
-//                    Log.d(arr.get(i).getReceive(),receive);
-//                    if(arr.get(i).getReceive().contains(receive)){
-////                        arr.remove(i);
-//
-//                    }else {
+                String receive = user.getUsername();
+                ArrayList<Message> temp = new ArrayList<>();
+                for(int i =0;i<arr.size();i++){
+                    Log.d(arr.get(i).getReceive(),receive);
+                    if(arr.get(i).getSend().contains(receive)){
 //                        arr.remove(i);
-//                    }
-//
-//                }
+                        temp.add(arr.get(i));
+
+                    }else {
+//                        arr.remove(i);
+                    }
+
+                }
 
 
 
-                list.setAdapter(new MesListAdapter(arr, user));
+                list.setAdapter(new MesListAdapter(temp, user));
                 list.setLayoutManager(new LinearLayoutManager(root.getContext()));
             }
         });
