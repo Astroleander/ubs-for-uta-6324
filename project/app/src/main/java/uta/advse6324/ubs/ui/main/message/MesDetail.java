@@ -27,6 +27,7 @@ import uta.advse6324.ubs.pojo.User;
 public class MesDetail extends AppCompatActivity {
     private TextView tv_time;
     private TextView tv_send;
+    private TextView tv_title;
     private TextView tv_content;
     private Button bt_back;
     private Button bt_delete;
@@ -95,10 +96,12 @@ public class MesDetail extends AppCompatActivity {
         tv_content = findViewById(R.id.text_detail_content);
         bt_back = findViewById(R.id.ms_bt_back);
         bt_delete = findViewById(R.id.ms_bt_delete);
-
+        String[] contents = message.getContent().split("\n");
+        String title = contents[0];
+        String content = contents[1];
         tv_time.setText(message.getTime());
         tv_send.setText(message.getSend());
-        tv_content.setText(message.getContent());
+        tv_content.setText(content);
 
     }
 }

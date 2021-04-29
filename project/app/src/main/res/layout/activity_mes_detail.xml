@@ -33,11 +33,24 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
+    <ImageView
+        android:id="@+id/logoImage4"
+        android:layout_width="418dp"
+        android:layout_height="118dp"
+        android:layout_centerInParent="true"
+        android:scaleType="fitXY"
+        android:src="@drawable/lowpoly"
+        app:layout_collapseMode="parallax"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <Button
         android:id="@+id/ms_bt_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="128dp"
+        android:backgroundTint="#673AB7"
         android:text="BACK"
         app:layout_anchor="@+id/include"
         app:layout_anchorGravity="bottom|center"
@@ -64,6 +77,7 @@
         android:layout_height="0dp"
         android:layout_marginBottom="409dp"
         android:text="Content"
+        android:textColor="#673AB7"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
@@ -89,6 +103,7 @@
         android:layout_marginTop="61dp"
         android:layout_marginBottom="59dp"
         android:text="Send"
+        android:textColor="#673AB7"
         app:layout_constraintBottom_toTopOf="@+id/textView11"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.505"
@@ -121,6 +136,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="56dp"
         android:layout_marginBottom="128dp"
+        android:backgroundTint="#673AB7"
         android:text="DELETE"
         app:layout_anchor="@+id/include"
         app:layout_anchorGravity="bottom|center"
@@ -143,6 +159,8 @@
         android:layout_width="314dp"
         android:layout_height="0dp"
         android:text="Time"
+        android:textColor="#673AB7"
+        android:textColorLink="#E42727"
         app:layout_constraintBottom_toTopOf="@+id/text_time"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
